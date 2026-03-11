@@ -203,6 +203,21 @@ color: #374151;
 font-weight: 700;
 }
 
+.rec-up {
+color: #166534;
+font-weight: 700;
+}
+
+.rec-down {
+color: #991b1b;
+font-weight: 700;
+}
+
+.rec-ok {
+color: #374151;
+font-weight: 700;
+}
+
 .actions {
 display: flex;
 gap: 8px;
@@ -309,6 +324,279 @@ min-width: 220px;
 width: auto;
 }
 
+.module-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 14px;
+}
+
+.module-card {
+padding: 16px;
+border-radius: 16px;
+background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(249,245,237,0.86));
+border: 1px solid rgba(176, 122, 42, 0.14);
+}
+
+.module-card h4 {
+margin: 0 0 6px 0;
+font-size: 16px;
+}
+
+.module-card p {
+margin: 0;
+font-size: 13px;
+color: var(--muted);
+}
+
+.module-actions {
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+margin-top: 12px;
+}
+
+.mini-metrics {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 8px;
+margin-top: 12px;
+}
+
+.mini-metric {
+padding: 10px 12px;
+border-radius: 12px;
+background: rgba(255,255,255,0.82);
+border: 1px solid rgba(176, 122, 42, 0.10);
+}
+
+.mini-metric strong {
+display: block;
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+color: var(--muted);
+margin-bottom: 4px;
+}
+
+.mini-metric span {
+font-size: 18px;
+font-weight: 700;
+color: #20413a;
+}
+
+.budget-banner {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+gap: 10px;
+margin: 12px 0 14px;
+}
+
+.budget-chip {
+padding: 10px 12px;
+border-radius: 14px;
+background: rgba(255,255,255,0.82);
+border: 1px solid rgba(176, 122, 42, 0.14);
+}
+
+.budget-chip strong {
+display: block;
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+color: var(--muted);
+margin-bottom: 4px;
+}
+
+.budget-chip span {
+font-size: 20px;
+font-weight: 700;
+color: #20413a;
+}
+
+.ghost-button {
+background: rgba(45, 75, 70, 0.10);
+color: #2d4b46;
+box-shadow: none;
+}
+
+.menu-shell {
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 12px;
+flex-wrap: wrap;
+}
+
+.bubble-nav {
+display: flex;
+gap: 10px;
+flex-wrap: wrap;
+}
+
+#view_menu_panel {
+position: sticky;
+top: 8px;
+z-index: 20;
+margin-bottom: 14px;
+padding: 10px 12px;
+border-radius: 999px;
+background: rgba(255,255,255,0.9);
+border: 1px solid rgba(176, 122, 42, 0.22);
+box-shadow: var(--shadow);
+}
+
+#view_menu_panel .menu-shell {
+justify-content: center;
+}
+
+.menu-bubble {
+border: 1px solid rgba(176, 122, 42, 0.30);
+background: rgba(255,255,255,0.80);
+color: #2d4b46;
+padding: 8px 12px;
+border-radius: 999px;
+font-weight: 700;
+box-shadow: none;
+}
+
+.menu-bubble.active {
+background: linear-gradient(135deg, #2d4b46, #466861);
+color: white;
+border-color: transparent;
+}
+
+.compare-pickers {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 10px;
+width: 100%;
+}
+
+.compare-picker {
+display: grid;
+gap: 6px;
+padding: 10px;
+border-radius: 12px;
+background: rgba(255,255,255,0.84);
+border: 1px solid rgba(176, 122, 42, 0.16);
+}
+
+.compare-picker strong {
+font-size: 12px;
+letter-spacing: 0.05em;
+text-transform: uppercase;
+color: #27463f;
+}
+
+.compare-picker select {
+width: 100%;
+}
+
+.compare-picker.emphasis {
+background: linear-gradient(135deg, rgba(246, 232, 191, 0.72), rgba(255,255,255,0.9));
+border: 2px solid rgba(176, 122, 42, 0.45);
+}
+
+.editor-modal-backdrop {
+position: fixed;
+inset: 0;
+background: rgba(26, 21, 14, 0.48);
+backdrop-filter: blur(6px);
+display: grid;
+place-items: center;
+padding: 24px;
+z-index: 80;
+}
+
+.editor-modal {
+width: min(1120px, 100%);
+max-height: calc(100vh - 48px);
+overflow: auto;
+padding: 18px;
+border-radius: 24px;
+background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(248,244,236,0.97));
+border: 1px solid rgba(176, 122, 42, 0.24);
+box-shadow: 0 28px 80px rgba(32, 24, 11, 0.28);
+}
+
+.editor-modal-header,
+.editor-modal-footer {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 12px;
+flex-wrap: wrap;
+}
+
+.editor-modal-footer {
+margin-top: 12px;
+padding-top: 12px;
+border-top: 1px solid var(--line);
+}
+
+.editor-modal-grid {
+display: grid;
+gap: 14px;
+margin-top: 14px;
+}
+
+.editor-open {
+width: 100%;
+justify-content: center;
+}
+
+.module-card.active-slot {
+border-color: rgba(45, 75, 70, 0.45);
+box-shadow: 0 14px 30px rgba(45, 75, 70, 0.16);
+}
+
+.view-hidden {
+display: none !important;
+}
+
+.tutorial-backdrop {
+position: fixed;
+inset: 0;
+background: rgba(20, 24, 31, 0.45);
+display: grid;
+place-items: center;
+z-index: 1500;
+padding: 20px;
+}
+
+.tutorial-modal {
+width: min(680px, 96vw);
+background: var(--panel);
+border: 1px solid var(--panel-border);
+border-radius: 18px;
+box-shadow: var(--shadow);
+padding: 18px;
+}
+
+.tutorial-modal h3 {
+margin: 0 0 8px 0;
+}
+
+.tutorial-step-counter {
+font-size: 12px;
+color: var(--muted);
+margin-bottom: 10px;
+}
+
+.tutorial-step-body {
+font-size: 14px;
+line-height: 1.6;
+color: var(--text);
+margin-bottom: 12px;
+}
+
+.tutorial-actions {
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+justify-content: flex-end;
+}
+
 @media (max-width: 1080px) {
 .hero,
 .layout-grid,
@@ -324,24 +612,33 @@ grid-template-columns: 1fr;
 <div class="hero">
 <div class="hero-card">
 <h1>Calculateur de reliques - Avancé</h1>
-<p class="hero-copy">Calibre tes reliques par charge, compare ton design custom au corpus existant, et lis une fiche détaillée relique par relique avec la meilleure configuration retenue, ses presets et sa lecture d'équilibrage.</p>
 <div class="hero-badge-row">
 <span class="badge">Budget cible flexible</span>
 <span class="badge">Comparateur global</span>
 <span class="badge">Comparateur individuel</span>
-<span class="badge">Résumé détaillé</span>
 </div>
 </div>
 <div class="hero-card">
 <div class="section-title">
 <h3>Lecture rapide</h3>
-<p>Cible actuelle recommandée: ~3 PV éco / charge</p>
+<p id="quick_target">Derniere relique: --</p>
 </div>
 <div class="summary-grid">
-<div class="summary-tile"><strong>Contrôle simple</strong><span class="metric-large">~2.8</span></div>
-<div class="summary-tile"><strong>Mitigation 50%</strong><span class="metric-large">~2.9</span></div>
-<div class="summary-tile"><strong>Paquet offensif</strong><span class="metric-large">~3.0</span></div>
-<div class="summary-tile"><strong>Attaque bonus</strong><span class="metric-large">~5.9</span></div>
+<div class="summary-tile"><strong>Total pire</strong><span class="metric-large" id="quick_worst">--</span></div>
+<div class="summary-tile"><strong>Total mieux</strong><span class="metric-large" id="quick_best">--</span></div>
+<div class="summary-tile"><strong>Total harmonise</strong><span class="metric-large" id="quick_harm">--</span></div>
+<div class="summary-tile"><strong>Total moyen</strong><span class="metric-large" id="quick_avg">--</span></div>
+</div>
+</div>
+</div>
+
+<div id="view_menu_panel">
+<div class="menu-shell">
+<div class="bubble-nav">
+<button type="button" class="menu-bubble active" data-view-target="all">Tout afficher</button>
+<button type="button" class="menu-bubble" data-view-target="combat">Combat & calcul</button>
+<button type="button" class="menu-bubble" data-view-target="createur">Créateur custom</button>
+<button type="button" class="menu-bubble" data-view-target="compare">Comparateurs & résumés</button>
 </div>
 </div>
 </div>
@@ -349,7 +646,7 @@ grid-template-columns: 1fr;
 <div class="layout-grid">
 <div class="stack">
 
-<div class="panel">
+<div class="panel view-section" data-view="combat createur">
 <h3>Porteur</h3>
 <div class="grid">
 <label>ATT <input id="att" type="number" value="40"></label>
@@ -360,7 +657,7 @@ grid-template-columns: 1fr;
 </div>
 </div>
 
-<div class="panel">
+<div class="panel view-section" data-view="combat createur">
 <h3>Cible</h3>
 <div class="grid">
 <label>ATT <input id="e_att" type="number" value="40"></label>
@@ -371,7 +668,7 @@ grid-template-columns: 1fr;
 </div>
 </div>
 
-<div class="panel">
+<div class="panel view-section" data-view="combat createur">
 <h3>Modes de jet</h3>
 <div class="grid">
 <label>Jet attaque porteur
@@ -405,6 +702,91 @@ grid-template-columns: 1fr;
 </div>
 </div>
 
+
+<div class="panel view-section" data-view="createur">
+<div class="section-title">
+<h3>Createur de relique custom</h3>
+</div>
+<div class="actions">
+<input id="custom_name" class="inline-input" type="text" placeholder="Nom de la relique custom">
+<button id="save_custom" type="button">Sauvegarder la relique</button>
+</div>
+<br>
+<div class="actions">
+<select id="custom_relics" class="inline-input">
+<option value="">Aucune relique custom enregistree</option>
+</select>
+<button id="load_custom" type="button">Charger la relique</button>
+<button id="delete_custom" type="button" class="ghost-button">Supprimer</button>
+</div>
+<div class="budget-banner">
+<div class="budget-chip"><strong>Budget total cible</strong><span id="builder_budget_total">0.00</span></div>
+<div class="budget-chip"><strong>Passif 20%</strong><span id="builder_budget_passive">0.00</span></div>
+<div class="budget-chip"><strong>Actif 1 40%</strong><span id="builder_budget_active1">0.00</span></div>
+<div class="budget-chip"><strong>Actif 2 40%</strong><span id="builder_budget_active2">0.00</span></div>
+</div>
+<div class="module-grid" id="custom_modules">
+<div class="module-card" data-slot="passive">
+<h4>Passif</h4>
+<div class="module-actions">
+<button id="edit_passive" type="button" class="editor-open">Editer le passif</button>
+</div>
+<div class="mini-metrics">
+<div class="mini-metric"><strong>Score</strong><span id="slot_passive_total">0.00</span></div>
+<div class="mini-metric"><strong>Cible</strong><span id="slot_passive_target">0.00</span></div>
+<div class="mini-metric"><strong>Ecart</strong><span id="slot_passive_gap">0.00</span></div>
+<div class="mini-metric"><strong>Verdict</strong><span id="slot_passive_status">Vide</span></div>
+<div class="mini-metric"><strong>Offense</strong><span id="slot_passive_off">0.00</span></div>
+<div class="mini-metric"><strong>Defense</strong><span id="slot_passive_def">0.00</span></div>
+<div class="mini-metric"><strong>Backlash</strong><span id="slot_passive_back">0.00</span></div>
+<div class="mini-metric"><strong>Charges</strong><span id="slot_passive_charge">1</span></div>
+ </div>
+ </div>
+<div class="module-card" data-slot="active1">
+<h4>Actif 1</h4>
+<div class="module-actions">
+<button id="edit_active1" type="button" class="editor-open">Editer l'actif 1</button>
+</div>
+<div class="mini-metrics">
+<div class="mini-metric"><strong>Score</strong><span id="slot_active1_total">0.00</span></div>
+<div class="mini-metric"><strong>Cible</strong><span id="slot_active1_target">0.00</span></div>
+<div class="mini-metric"><strong>Ecart</strong><span id="slot_active1_gap">0.00</span></div>
+<div class="mini-metric"><strong>Verdict</strong><span id="slot_active1_status">Vide</span></div>
+<div class="mini-metric"><strong>Offense</strong><span id="slot_active1_off">0.00</span></div>
+<div class="mini-metric"><strong>Defense</strong><span id="slot_active1_def">0.00</span></div>
+<div class="mini-metric"><strong>Backlash</strong><span id="slot_active1_back">0.00</span></div>
+<div class="mini-metric"><strong>Charges</strong><span id="slot_active1_charge">1</span></div>
+ </div>
+ </div>
+<div class="module-card" data-slot="active2">
+<h4>Actif 2</h4>
+<div class="module-actions">
+<button id="edit_active2" type="button" class="editor-open">Editer l'actif 2</button>
+</div>
+<div class="mini-metrics">
+<div class="mini-metric"><strong>Score</strong><span id="slot_active2_total">0.00</span></div>
+<div class="mini-metric"><strong>Cible</strong><span id="slot_active2_target">0.00</span></div>
+<div class="mini-metric"><strong>Ecart</strong><span id="slot_active2_gap">0.00</span></div>
+<div class="mini-metric"><strong>Verdict</strong><span id="slot_active2_status">Vide</span></div>
+<div class="mini-metric"><strong>Offense</strong><span id="slot_active2_off">0.00</span></div>
+<div class="mini-metric"><strong>Defense</strong><span id="slot_active2_def">0.00</span></div>
+<div class="mini-metric"><strong>Backlash</strong><span id="slot_active2_back">0.00</span></div>
+<div class="mini-metric"><strong>Charges</strong><span id="slot_active2_charge">1</span></div>
+ </div>
+ </div>
+</div>
+</div>
+
+<div id="editor_modal_backdrop" class="editor-modal-backdrop view-hidden">
+<div class="editor-modal">
+<div class="editor-modal-header">
+<div>
+<h3 id="editor_modal_title">Editeur de module</h3>
+<p class="small" id="editor_modal_subtitle">Configure le module puis sauvegarde-le dans la relique custom.</p>
+</div>
+<button id="close_editor_modal" type="button" class="ghost-button">Fermer</button>
+</div>
+<div class="editor-modal-grid">
 <div class="panel">
 <h3>Preset relique / effet</h3>
 <select id="preset" class="wide">
@@ -460,9 +842,7 @@ grid-template-columns: 1fr;
 <option value="eryndel_piqure">Eryndel Piqure du Crepuscule (sommeil sur touche)</option>
 <option value="eryndel_brume">Eryndel Brume des Songes (controle de zone)</option>
 </select>
-<p class="small">Le preset remplit les bonus mecaniques; tu peux ensuite tout modifier a la main.</p>
 </div>
-
 <div class="panel">
 <h3>Bonus custom (attaque/controle/defense)</h3>
 <div class="grid">
@@ -493,94 +873,10 @@ grid-template-columns: 1fr;
 <label>Efficacite du soin (%) <input id="b_heal_efficiency" type="number" value="100"></label>
 <label>Valeur utilitaire / tempo <input id="b_utility" type="number" step="0.1" value="0"></label>
 <label>Charges consommees <input id="b_charge_cost" type="number" min="1" step="1" value="1"></label>
+ </div>
 </div>
-</div>
-
-<div class="panel">
-<h3>Createur de relique custom</h3>
-<div class="actions">
-<input id="custom_name" class="inline-input" type="text" placeholder="Nom de la relique custom">
-<button id="save_custom" type="button">Sauvegarder la config actuelle</button>
-</div>
-<br>
-<div class="actions">
-<select id="custom_relics" class="inline-input">
-<option value="">Aucune relique custom enregistree</option>
-</select>
-<button id="load_custom" type="button">Charger dans les bonus</button>
-<button id="delete_custom" type="button">Supprimer</button>
-</div>
-<p class="small">Le createur enregistre tous les champs du bloc bonus custom.</p>
-</div>
-
-<div class="panel">
-<div class="section-title">
-<h3>Comparateur global</h3>
-<p>Classement de ton custom contre l'ensemble des reliques.</p>
-</div>
-<div class="actions">
-<button id="compare_btn" type="button">Comparer ma config custom aux reliques existantes</button>
-</div>
-<p class="small">Comparaison par relique, avec une valeur estimee par charge / activation et non plus par sequence infinie.</p>
-<table>
-<thead>
-<tr>
-<th>Relique</th>
-<th>PV eco relique / charge</th>
-<th>PV eco custom / charge</th>
-<th>Delta custom - relique</th>
-</tr>
-</thead>
-<tbody id="compare_rows">
-<tr><td colspan="4">Clique sur comparer pour afficher le classement.</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="panel">
-<div class="section-title">
-<h3>Comparateur individuel</h3>
-<p>Analyse une relique precise contre ton custom actuel.</p>
-</div>
-<div class="actions">
-<select id="focus_relic" class="compact-select"></select>
-<button id="compare_focus_btn" type="button">Comparer cette relique</button>
-</div>
-<div id="focus_compare" class="detail-list">
-<div class="detail-item">Choisis une relique pour voir l'ecart detaille preset par preset.</div>
-</div>
-</div>
-
-<div class="panel">
-<div class="section-title">
-<h3>Résumé détaillé</h3>
-<p>Fiche synthétique d'une relique avec meilleur preset et lecture d'équilibrage.</p>
-</div>
-<div id="relic_summary" class="detail-list">
-<div class="detail-item">Le résumé détaillé s'affiche ici après sélection d'une relique.</div>
-</div>
-</div>
-
-</div>
-
-<div class="stack">
-
-<div class="panel">
-<button onclick="calculate()">Calculer</button>
-</div>
-
 <div class="panel kpi">
-<h3>Reference combat</h3>
-Chance de toucher : <span id="hit"></span><br>
-Degats moyens par attaque : <span id="atk"></span><br>
-Degats moyens sur touche : <span id="onhit"></span><br>
-Valeur offensive de base par action : <span id="seq"></span><br>
-Chance de controle mental : <span id="mental"></span><br>
-Valeur offensive adverse par action : <span id="enemy_seq"></span>
-</div>
-
-<div class="panel kpi">
-<h3>Resultat avec bonus/preset</h3>
+<h3>Resultat du module en cours</h3>
 Chance de toucher modifiee : <span id="m_hit"></span><br>
 Degats moyens modifies par attaque : <span id="m_atk"></span><br>
 Valeur offensive modifiee par action : <span id="m_seq"></span><br>
@@ -590,11 +886,144 @@ Backlash moyen par charge : <span id="delta_self"></span><br>
 <div class="result" id="result"></div>
 </div>
 </div>
+<div class="editor-modal-footer">
+<div class="actions">
+<button id="cancel_editor_modal" type="button" class="ghost-button">Annuler</button>
+<button id="save_editor_modal" type="button">Sauvegarder dans ce module</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="panel view-section" data-view="compare">
+<div class="section-title">
+<h3>Comparateur global</h3>
+</div>
+<div class="actions">
+<div class="compare-pickers">
+<label class="compare-picker">
+<strong>Source custom</strong>
+<select id="custom_compare_source" class="compact-select">
+<option value="relic">Relique complète créée</option>
+<option value="editor">Éditeur courant</option>
+</select>
+</label>
+<label class="compare-picker emphasis">
+<strong>Relique custom à comparer</strong>
+<select id="custom_compare_relic" class="compact-select">
+<option value="__current__">Brouillon courant</option>
+</select>
+</label>
+<label class="compare-picker">
+<strong>Référence existante</strong>
+<select id="compare_existing_mode" class="compact-select">
+<option value="best">Au mieux</option>
+<option value="avg">Moyenne</option>
+<option value="worst">Au pire</option>
+<option value="harm">Harmonisé</option>
+</select>
+</label>
+</div>
+<button id="compare_btn" type="button">Comparer ma config custom aux reliques existantes</button>
+</div>
+<p class="small" id="median_info">Médiane de référence: --</p>
+<table>
+<thead>
+<tr>
+<th>Relique</th>
+<th>PV eco relique / charge</th>
+<th>PV eco custom / charge</th>
+<th>Delta custom - relique</th>
+<th>Ecart a la mediane</th>
+<th>Ajustement conseille</th>
+</tr>
+</thead>
+<tbody id="compare_rows">
+<tr><td colspan="6">Clique sur comparer pour afficher le classement.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel view-section" data-view="compare">
+<div class="section-title">
+<h3>Comparateur individuel</h3>
+</div>
+<div class="actions">
+<select id="focus_relic" class="compact-select"></select>
+<button id="compare_focus_btn" type="button">Comparer cette relique</button>
+</div>
+<div id="focus_compare" class="detail-list">
+<div class="detail-item">Choisis une relique.</div>
+</div>
+</div>
+
+</div>
+
+<div class="stack">
+
+<div class="panel kpi view-section" data-view="combat createur">
+<h3>Reference combat</h3>
+Chance de toucher : <span id="hit"></span><br>
+Degats moyens par attaque : <span id="atk"></span><br>
+Degats moyens sur touche : <span id="onhit"></span><br>
+Valeur offensive de base par action : <span id="seq"></span><br>
+Chance de controle mental : <span id="mental"></span><br>
+Valeur offensive adverse par action : <span id="enemy_seq"></span>
+</div>
+
+<div class="panel view-section" data-view="combat createur">
+<div class="section-title">
+<h3>Simulation nouvelles reliques</h3>
+</div>
+<div class="grid">
+<label>Uptime cond. mauvais (%) <input id="sc_uptime_worst" type="number" value="35"></label>
+<label>Uptime cond. moyen (%) <input id="sc_uptime_avg" type="number" value="60"></label>
+<label>Uptime cond. mieux (%) <input id="sc_uptime_best" type="number" value="85"></label>
+
+<label>Cibles utiles mauvais (x) <input id="sc_targets_worst" type="number" step="0.1" value="1"></label>
+<label>Cibles utiles moyen (x) <input id="sc_targets_avg" type="number" step="0.1" value="1.5"></label>
+<label>Cibles utiles mieux (x) <input id="sc_targets_best" type="number" step="0.1" value="2"></label>
+
+<label>Conversion utilite mauvais (%) <input id="sc_convert_worst" type="number" value="60"></label>
+<label>Conversion utilite moyen (%) <input id="sc_convert_avg" type="number" value="80"></label>
+<label>Conversion utilite mieux (%) <input id="sc_convert_best" type="number" value="100"></label>
+
+<label>Risque/backlash mauvais (%) <input id="sc_risk_worst" type="number" value="120"></label>
+<label>Risque/backlash moyen (%) <input id="sc_risk_avg" type="number" value="100"></label>
+<label>Risque/backlash mieux (%) <input id="sc_risk_best" type="number" value="80"></label>
+</div>
+<div class="summary-grid">
+<div class="summary-tile"><strong>Mauvais</strong><span class="metric-large" id="sc_score_worst">--</span></div>
+<div class="summary-tile"><strong>Moyen</strong><span class="metric-large" id="sc_score_avg">--</span></div>
+<div class="summary-tile"><strong>Mieux</strong><span class="metric-large" id="sc_score_best">--</span></div>
+<div class="summary-tile"><strong>Harmonise</strong><span class="metric-large" id="sc_score_harm">--</span></div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="tutorial_backdrop" class="tutorial-backdrop view-hidden">
+<div class="tutorial-modal" role="dialog" aria-modal="true" aria-labelledby="tutorial_title">
+<h3 id="tutorial_title">Tutoriel rapide</h3>
+<div id="tutorial_step_counter" class="tutorial-step-counter"></div>
+<div id="tutorial_body" class="tutorial-step-body"></div>
+<div class="tutorial-actions" id="tutorial_choice_actions">
+<button id="tutorial_refuse_btn" type="button" class="ghost-button">Refuser</button>
+<button id="tutorial_start_btn" type="button">Commencer le tutoriel</button>
+</div>
+<div class="tutorial-actions view-hidden" id="tutorial_nav_actions">
+<button id="tutorial_skip_btn" type="button" class="ghost-button">Passer</button>
+<button id="tutorial_prev_btn" type="button" class="ghost-button">Précédent</button>
+<button id="tutorial_next_btn" type="button">Suivant</button>
+</div>
 </div>
 </div>
 
 <script>
 const STORAGE_KEY = "empyrean_custom_relics_v1";
+const SESSION_TUTORIAL_KEY = "empyrean_tutorial_choice_v1";
 
 const DEFAULT_CUSTOM = {
 b_att: 0,
@@ -648,6 +1077,207 @@ const RELIC_GROUPS = [
 { name: "Thalerys", presets: ["thalerys_passif", "thalerys_fracture", "thalerys_danse"], role: "Ligne / fragmentation", summary: "Relique de zone. Ses actifs sont ponderees par une moyenne d'impact spatial plutot que par le meilleur cas multi-cibles." },
 { name: "Eryndel", presets: ["eryndel_passif", "eryndel_piqure", "eryndel_brume"], role: "Sommeil / brume", summary: "Relique de sommeil et de brume. Les effets de zone et d'endormissement sont volontairement ramènes à une moyenne d'usage." }
 ];
+
+const DEFAULT_RELIC_MODE_MODEL = {
+worst: 0.75,
+avg: 1,
+best: 1.25,
+labels: {
+worst: "Scenario defavorable (conditions inconnues, peu de synergie).",
+avg: "Scenario standard de partie.",
+best: "Scenario ideal (conditions favorables)."
+}
+};
+
+const CREATOR_BUDGET_SPLIT = {
+passive: 0.20,
+active1: 0.40,
+active2: 0.40
+};
+
+const HARMONIZATION_TOLERANCE = {
+strict: 0.25,
+permissive: 0.45,
+watch: 0.90
+};
+
+const NEW_RELIC_SCENARIO_WEIGHTS = {
+worst: 0.25,
+avg: 0.50,
+best: 0.25
+};
+
+const RELIC_MODE_MODELS = {
+"Zaban": { worst: 0.78, avg: 1, best: 1.28, labels: { worst: "Duel hors legitimite de serment.", avg: "Duel legitime sans setup externe.", best: "Duel legitime + setup/finisher ideal." } },
+"Samawi": { worst: 0.72, avg: 1, best: 1.35, labels: { worst: "Controle sur cible resistante ou isolee.", avg: "Controle standard sur 1 cible cle.", best: "Controle reussi sur plusieurs cibles critiques." } },
+"Nishan": { worst: 0.82, avg: 1, best: 1.24, labels: { worst: "Peu de fenetres pour focus la cible marquee.", avg: "Focus normal sur cible marquee.", best: "Focus constant + priorite parfaite." } },
+"Khashtar": { worst: 0.70, avg: 1, best: 1.35, labels: { worst: "Duel hors offenseur (vengeance peu rentable).", avg: "Duel contre offenseur.", best: "Duel offenseur + lien Zaban actif." } },
+"Garmazan": { worst: 0.80, avg: 1, best: 1.22, labels: { worst: "Etat difficile a placer/maintenir.", avg: "Degats + etat sur rythme normal.", best: "Etat maintenu avec bonne chaine offensive." } },
+"Bahr": { worst: 0.86, avg: 1, best: 1.16, labels: { worst: "Mitigation peu exploitee (pression faible).", avg: "Mitigation reguliere en frontline.", best: "Mitigation pleinement exploitee sous forte pression." } },
+"Khiyal et Hazar": { worst: 0.79, avg: 1, best: 1.24, labels: { worst: "Peu de valeur d'embuscade.", avg: "Escarmouche standard.", best: "Ouverture parfaite avec avantage tactique." } },
+"Taban": { worst: 0.76, avg: 1, best: 1.27, labels: { worst: "Surprise neutralisee.", avg: "Infiltration viable en rythme normal.", best: "Silence + surprise exploites au bon timing." } },
+"Saat et Zaman": { worst: 0.83, avg: 1, best: 1.21, labels: { worst: "Fenetre de double tempo reduite.", avg: "Tempo classique.", best: "Enchainement optimisé des doubles frappes." } },
+"Akhtari": { worst: 0.84, avg: 1, best: 1.20, labels: { worst: "Peu d'information utile a convertir.", avg: "Valeur utilitaire reguliere.", best: "Lecture parfaite convertie en avantage tactique." } },
+"Mishraq": { worst: 0.88, avg: 1, best: 1.14, labels: { worst: "Peu de degats a absorber.", avg: "Defensif stable.", best: "Soin/bouclier pleinement rentabilises." } },
+"Ilyr": { worst: 0.80, avg: 1, best: 1.22, labels: { worst: "Soin partiellement gaspille.", avg: "Soutien stable.", best: "Soutien decisive sous forte attrition." } },
+"Saelthir": { worst: 0.81, avg: 1, best: 1.23, labels: { worst: "Controle peu impactant.", avg: "Hybride charme/lame standard.", best: "Controle + burst alignes." } },
+"Nimthalas": { worst: 0.74, avg: 1, best: 1.30, labels: { worst: "Seuils d'execution rarement atteints.", avg: "Executions occasionnelles.", best: "Executions frequentes sur cibles fragilisees." } },
+"Lomineth": { worst: 0.85, avg: 1, best: 1.17, labels: { worst: "Interposition peu sollicitée.", avg: "Protection de ligne reguliere.", best: "Interposition critique a tres haute valeur." } },
+"Thalanir": { worst: 0.77, avg: 1, best: 1.26, labels: { worst: "Adversaire peu axe mental.", avg: "Anti-mental utile mais partiel.", best: "Anti-mental cle dans le matchup." } },
+"Aeltharion": { worst: 0.78, avg: 0.95, best: 1.15, labels: { worst: "Mode defensif peu puni en face.", avg: "Polyvalence reguliere sans pic.", best: "Alternance lame/bouclier bien timée mais pas parfaite." } },
+"Solvaris": { worst: 0.75, avg: 1, best: 1.28, labels: { worst: "Poison peu maintenu.", avg: "Assassinat standard.", best: "Poison et burst alignes sur cible prioritaire." } },
+"Thalerys": { worst: 0.79, avg: 1, best: 1.24, labels: { worst: "Zone peu rentabilisee.", avg: "Impact de ligne moyen.", best: "Multiples cibles captees dans la ligne." } },
+"Eryndel": { worst: 0.78, avg: 1, best: 1.25, labels: { worst: "Sommeil rarement decisif.", avg: "Controle de tempo regulier.", best: "Sommeil/brume decisifs sur plusieurs tours." } }
+};
+
+let customRelicBuilder = createEmptyCustomRelic();
+let currentEditorSlot = null;
+let tutorialStepIndex = -1;
+
+const TUTORIAL_STEPS = [
+{
+title: "Navigation",
+body: "Utilise la barre en bulles en haut pour basculer entre Calcul, Créateur et Comparateurs."
+},
+{
+title: "Base de calcul",
+body: "Règle d'abord les stats Porteur/Cible et les modes de jet. Tous les scores se recalculent avec ce contexte."
+},
+{
+title: "Créateur custom",
+body: "Édite Passif, Actif 1 et Actif 2 via les boutons d'édition, puis sauvegarde la relique avec un nom."
+},
+{
+title: "Scénarios nouvelles reliques",
+body: "Ajuste les curseurs mauvais/moyen/mieux pour simuler l'incertitude des conditions, puis lis le total harmonisé."
+},
+{
+title: "Comparaison",
+body: "Dans le comparateur global, choisis la source custom et le mode de référence pour voir les écarts et recommandations."
+}
+];
+
+function setTutorialSessionChoice(value) {
+try {
+sessionStorage.setItem(SESSION_TUTORIAL_KEY, value);
+} catch (_) {
+}
+}
+
+function getTutorialSessionChoice() {
+try {
+return sessionStorage.getItem(SESSION_TUTORIAL_KEY);
+} catch (_) {
+return null;
+}
+}
+
+function openTutorialModal() {
+document.getElementById("tutorial_backdrop").classList.remove("view-hidden");
+}
+
+function closeTutorialModal() {
+document.getElementById("tutorial_backdrop").classList.add("view-hidden");
+}
+
+function renderTutorialChoice() {
+tutorialStepIndex = -1;
+document.getElementById("tutorial_title").textContent = "Tutoriel rapide";
+document.getElementById("tutorial_step_counter").textContent = "";
+document.getElementById("tutorial_body").textContent = "Veux-tu voir un tutoriel pas à pas de l'application ?";
+document.getElementById("tutorial_choice_actions").classList.remove("view-hidden");
+document.getElementById("tutorial_nav_actions").classList.add("view-hidden");
+openTutorialModal();
+}
+
+function renderTutorialStep() {
+const step = TUTORIAL_STEPS[tutorialStepIndex];
+if (!step) {
+setTutorialSessionChoice("done");
+closeTutorialModal();
+return;
+}
+
+document.getElementById("tutorial_title").textContent = step.title;
+document.getElementById("tutorial_step_counter").textContent = "Étape " + (tutorialStepIndex + 1) + " / " + TUTORIAL_STEPS.length;
+document.getElementById("tutorial_body").textContent = step.body;
+document.getElementById("tutorial_choice_actions").classList.add("view-hidden");
+document.getElementById("tutorial_nav_actions").classList.remove("view-hidden");
+document.getElementById("tutorial_prev_btn").disabled = tutorialStepIndex <= 0;
+document.getElementById("tutorial_next_btn").textContent = tutorialStepIndex >= (TUTORIAL_STEPS.length - 1) ? "Terminer" : "Suivant";
+openTutorialModal();
+}
+
+function startTutorial() {
+setTutorialSessionChoice("accepted");
+tutorialStepIndex = 0;
+renderTutorialStep();
+}
+
+function prevTutorialStep() {
+if (tutorialStepIndex <= 0) return;
+tutorialStepIndex -= 1;
+renderTutorialStep();
+}
+
+function nextTutorialStep() {
+if (tutorialStepIndex >= TUTORIAL_STEPS.length - 1) {
+setTutorialSessionChoice("done");
+closeTutorialModal();
+return;
+}
+tutorialStepIndex += 1;
+renderTutorialStep();
+}
+
+function skipTutorial() {
+setTutorialSessionChoice("done");
+closeTutorialModal();
+}
+
+function refuseTutorial() {
+setTutorialSessionChoice("refused");
+closeTutorialModal();
+}
+
+function maybeStartTutorial() {
+const choice = getTutorialSessionChoice();
+if (choice === "refused" || choice === "done") return;
+if (choice === "accepted") {
+startTutorial();
+return;
+}
+renderTutorialChoice();
+}
+
+function createEmptyCustomRelic() {
+return {
+name: "",
+passive: { ...DEFAULT_CUSTOM },
+active1: { ...DEFAULT_CUSTOM },
+active2: { ...DEFAULT_CUSTOM }
+};
+}
+
+function normalizeSavedRelic(record) {
+if (record && record.passive && record.active1 && record.active2) {
+return {
+name: record.name || "",
+passive: { ...DEFAULT_CUSTOM, ...record.passive },
+active1: { ...DEFAULT_CUSTOM, ...record.active1 },
+active2: { ...DEFAULT_CUSTOM, ...record.active2 }
+};
+}
+if (record && record.config) {
+return {
+name: record.name || "",
+passive: { ...DEFAULT_CUSTOM, ...record.config },
+active1: { ...DEFAULT_CUSTOM },
+active2: { ...DEFAULT_CUSTOM }
+};
+}
+return createEmptyCustomRelic();
+}
 
 function num(id) {
 return Number(document.getElementById(id).value) || 0;
@@ -766,6 +1396,11 @@ if (el) el.value = cfg[key] != null ? cfg[key] : DEFAULT_CUSTOM[key];
 }
 }
 
+function setBuilderName(value) {
+document.getElementById("custom_name").value = value || "";
+customRelicBuilder.name = value || "";
+}
+
 function evaluateWithCustom(custom, ctx) {
 const modified = calcAttack(ctx.att, ctx.eDef, ctx.attMode, ctx.defMode, {
 flatOnHit: custom.b_dmg_on_hit,
@@ -834,123 +1469,193 @@ const cfg = { ...DEFAULT_CUSTOM };
 if (presetId === "zaban_passif") {
 cfg.b_att = 1;
 cfg.b_dmg_on_hit = 3;
+cfg.b_utility = -0.40;
 }
 if (presetId === "zaban_traitre") {
 cfg.b_cond_dmg = 5;
 cfg.b_cond_uptime = 60;
+cfg.b_utility = -0.46;
 }
 if (presetId === "zaban_serment") {
 cfg.b_extra_attacks = 1;
 cfg.b_extra_attack_factor = 50;
+cfg.b_utility = -0.45;
 }
-if (presetId === "samawi_treve") cfg.b_mental_direct = 1;
+if (presetId === "samawi_treve") {
+cfg.b_mental_direct = 1;
+cfg.b_utility = -0.41;
+}
 if (presetId === "samawi_aube_alt") {
 cfg.b_mental_direct = 1;
 cfg.b_mental_targets = 1.4;
 cfg.b_control_factor = 80;
+cfg.b_utility = -0.41;
 }
 if (presetId === "nishan_passif") {
 cfg.b_att = 2;
 cfg.b_dmg_on_hit = 1;
+cfg.b_utility = 0.31;
 }
 if (presetId === "nishan_sentence") {
 cfg.b_att = 3;
-cfg.b_utility = 1.4;
+cfg.b_utility = 1.86;
 }
 if (presetId === "khashtar_passif") {
 cfg.b_att = 1;
 cfg.b_dmg_on_hit = 2;
+cfg.b_utility = 0.50;
 }
 if (presetId === "khashtar_dette") {
 cfg.b_att = 1;
 cfg.b_mult = 2;
 cfg.b_self_on_miss = 2;
 cfg.b_charge_cost = 2;
+cfg.b_utility = 0.46;
 }
 if (presetId === "garmazan_passif") {
 cfg.b_att = 1;
 cfg.b_dmg_on_hit = 2;
+cfg.b_utility = 0.34;
 }
 if (presetId === "garmazan_fleche") {
 cfg.b_mental_on_hit = 1;
 cfg.b_dmg_on_hit = 3;
+cfg.b_utility = 0.52;
 }
-if (presetId === "bahr_passif") cfg.b_att = 2;
-if (presetId === "bahr_vague") cfg.b_incoming_reduction = 50;
-if (presetId === "khiyal_passif") cfg.b_dmg_on_hit = 2;
+if (presetId === "bahr_passif") {
+cfg.b_att = 2;
+cfg.b_utility = 0.51;
+}
+if (presetId === "bahr_vague") {
+cfg.b_incoming_reduction = 50;
+cfg.b_utility = 0.77;
+}
+if (presetId === "khiyal_passif") {
+cfg.b_dmg_on_hit = 2;
+cfg.b_utility = 0.50;
+}
 if (presetId === "khiyal_voile") {
 cfg.b_att = 2;
 cfg.b_enemy_att_malus = 5;
+cfg.b_utility = 0.74;
 }
-if (presetId === "taban_passif") cfg.b_att = 2;
+if (presetId === "taban_passif") {
+cfg.b_att = 2;
+cfg.b_utility = 0.09;
+}
 if (presetId === "taban_silence") {
 cfg.b_enemy_att_malus = 5;
 cfg.b_enemy_malus_uptime = 100;
-cfg.b_utility = 1;
+cfg.b_utility = 1.08;
 }
-if (presetId === "taban_cygne") cfg.b_att = 2;
-if (presetId === "saat_passif") cfg.b_dmg_on_hit = 2;
-if (presetId === "saat_rythme") cfg.b_extra_on_hit = 1;
-if (presetId === "akhtari_passif") cfg.b_att = 2;
-if (presetId === "akhtari_vision") cfg.b_utility = 2.5;
-if (presetId === "akhtari_oeil") cfg.b_utility = 3;
-if (presetId === "mishraq_passif") cfg.b_enemy_att_malus = 2;
-if (presetId === "mishraq_voeu") cfg.b_heal_now = pv / 4;
+if (presetId === "taban_cygne") {
+cfg.b_att = 2;
+cfg.b_utility = 0.09;
+}
+if (presetId === "saat_passif") {
+cfg.b_dmg_on_hit = 2;
+cfg.b_utility = 0.53;
+}
+if (presetId === "saat_rythme") {
+cfg.b_extra_on_hit = 1;
+cfg.b_utility = 0.79;
+}
+if (presetId === "akhtari_passif") {
+cfg.b_att = 2;
+cfg.b_utility = -0.40;
+}
+if (presetId === "akhtari_vision") cfg.b_utility = 2.03;
+if (presetId === "akhtari_oeil") cfg.b_utility = 2.54;
+if (presetId === "mishraq_passif") {
+cfg.b_enemy_att_malus = 2;
+cfg.b_utility = 0.52;
+}
+if (presetId === "mishraq_voeu") {
+cfg.b_heal_now = pv / 4;
+cfg.b_utility = 0.79;
+}
 if (presetId === "ilyr_grace") {
 cfg.b_heal_hot = 4;
 cfg.b_enemy_att_malus = 3;
 cfg.b_enemy_malus_uptime = 50;
 cfg.b_heal_efficiency = 50;
-cfg.b_utility = 0.4;
+cfg.b_utility = 0;
 }
-if (presetId === "ilyr_partage") cfg.b_incoming_reduction = 50;
-if (presetId === "saelthir_voix") cfg.b_mental_direct = 1;
+if (presetId === "ilyr_partage") {
+cfg.b_incoming_reduction = 50;
+cfg.b_utility = -0.40;
+}
+if (presetId === "saelthir_voix") {
+cfg.b_mental_direct = 1;
+cfg.b_utility = -0.37;
+}
 if (presetId === "saelthir_eclat") {
 cfg.b_att = 2;
 cfg.b_dmg_on_hit = 4;
+cfg.b_utility = -0.37;
 }
-if (presetId === "nimthalas_passif") cfg.b_dmg_on_hit = 2;
+if (presetId === "nimthalas_passif") {
+cfg.b_dmg_on_hit = 2;
+cfg.b_utility = -0.66;
+}
 if (presetId === "nimthalas_voile") {
 cfg.b_enemy_att_malus = 5;
-cfg.b_utility = 1;
+cfg.b_utility = 0.34;
 }
 if (presetId === "nimthalas_jugement") {
 cfg.b_att = 3;
 cfg.b_cond_dmg = 3;
+cfg.b_utility = -0.67;
 }
-if (presetId === "lomineth_interposition") cfg.b_incoming_reduction = 50;
+if (presetId === "lomineth_interposition") {
+cfg.b_incoming_reduction = 50;
+cfg.b_utility = -0.30;
+}
 if (presetId === "lomineth_regard") {
 cfg.b_att = 2;
-cfg.b_utility = 2;
+cfg.b_utility = 1.58;
 }
 if (presetId === "thalanir_passif") {
 cfg.b_enemy_att_malus = 2;
 cfg.b_evol = -3;
 cfg.b_enemy_malus_uptime = 60;
+cfg.b_utility = 0.34;
 }
 if (presetId === "thalanir_mur") {
 cfg.b_enemy_att_malus = 3;
 cfg.b_evol = -2;
 cfg.b_enemy_malus_uptime = 65;
+cfg.b_utility = 0.34;
 }
 if (presetId === "thalanir_replique") {
 cfg.b_mental_direct = 1;
 cfg.b_mental_targets = 1;
 cfg.b_control_factor = 100;
+cfg.b_utility = 0.36;
 }
-if (presetId === "aeltharion_lame") cfg.b_att = 1;
-if (presetId === "aeltharion_bouclier") cfg.b_enemy_att_malus = 1;
+if (presetId === "aeltharion_lame") {
+cfg.b_att = 1;
+cfg.b_utility = 0.34;
+}
+if (presetId === "aeltharion_bouclier") {
+cfg.b_enemy_att_malus = 1;
+cfg.b_utility = 0.34;
+}
 if (presetId === "aeltharion_danse") {
 cfg.b_enemy_att_malus = 5;
 cfg.b_enemy_malus_uptime = 60;
+cfg.b_utility = 0.34;
 }
-if (presetId === "aeltharion_horizon") cfg.b_dmg_on_hit = 3;
+if (presetId === "aeltharion_horizon") {
+cfg.b_dmg_on_hit = 3;
+cfg.b_utility = 0.34;
+}
 if (presetId === "aeltharion_egide") {
 cfg.b_enemy_att_malus = 3;
 cfg.b_enemy_malus_uptime = 50;
 cfg.b_intercept = 1;
 cfg.b_intercept_factor = 35;
-cfg.b_utility = 0.4;
+cfg.b_utility = 0.65;
 }
 if (presetId === "solvaris_aube") {
 cfg.b_att = 2;
@@ -961,28 +1666,37 @@ cfg.b_att = 2;
 cfg.b_cond_dmg = 5;
 cfg.b_cond_uptime = 70;
 }
-if (presetId === "thalerys_passif") cfg.b_att = 2;
+if (presetId === "thalerys_passif") {
+cfg.b_att = 2;
+cfg.b_utility = -0.42;
+}
 if (presetId === "thalerys_fracture") {
 cfg.b_att = 2;
 cfg.b_extra_on_hit = 0.5;
 cfg.b_extra_attack_factor = 80;
+cfg.b_utility = -0.43;
 }
 if (presetId === "thalerys_danse") {
 cfg.b_att = 2;
 cfg.b_heal_hot = 3;
 cfg.b_heal_efficiency = 70;
+cfg.b_utility = -0.43;
 }
-if (presetId === "eryndel_passif") cfg.b_att = 2;
+if (presetId === "eryndel_passif") {
+cfg.b_att = 2;
+cfg.b_utility = -0.54;
+}
 if (presetId === "eryndel_piqure") {
 cfg.b_att = 2;
 cfg.b_mental_on_hit = 1;
 cfg.b_control_factor = 75;
-cfg.b_utility = 0.8;
+cfg.b_utility = 0.26;
 }
 if (presetId === "eryndel_brume") {
 cfg.b_mental_direct = 1;
 cfg.b_mental_targets = 1.5;
 cfg.b_control_factor = 70;
+cfg.b_utility = -0.54;
 }
 
 return cfg;
@@ -1015,6 +1729,357 @@ if (value > 3.3) return "Relique actuellement au-dessus de la cible de calibrati
 return "Relique deja proche de la cible de calibration.";
 }
 
+function classifyPreset(presetId) {
+if (presetId === "aeltharion_lame" || presetId === "aeltharion_bouclier") return "passive";
+return presetId.includes("passif") ? "passive" : "active";
+}
+
+function evaluateCustomRelicComplete(ctx) {
+return evaluateRelicRecordComplete(customRelicBuilder, ctx);
+}
+
+function evaluateRelicRecordComplete(record, ctx) {
+const safe = normalizeSavedRelic(record || createEmptyCustomRelic());
+const passiveEval = evaluateWithCustom(safe.passive, ctx);
+const active1Eval = evaluateWithCustom(safe.active1, ctx);
+const active2Eval = evaluateWithCustom(safe.active2, ctx);
+const total = passiveEval.total + active1Eval.total + active2Eval.total;
+return {
+total,
+passive: passiveEval,
+active1: active1Eval,
+active2: active2Eval
+};
+}
+
+function getSelectedCustomRelicRecord() {
+const pick = document.getElementById("custom_compare_relic").value;
+if (!pick || pick === "__current__") return normalizeSavedRelic(customRelicBuilder);
+const found = loadSavedRelics().find((item) => item.name === pick);
+return found ? normalizeSavedRelic(found) : normalizeSavedRelic(customRelicBuilder);
+}
+
+function getLatestCreatedRelicRecord() {
+const list = loadSavedRelics();
+if (!list.length) return normalizeSavedRelic(customRelicBuilder);
+return normalizeSavedRelic(list[list.length - 1]);
+}
+
+function getCustomComparisonScore(ctx) {
+const source = document.getElementById("custom_compare_source").value;
+if (source === "relic") {
+const chosenRelic = getSelectedCustomRelicRecord();
+const full = evaluateRelicRecordComplete(chosenRelic, ctx);
+return {
+mode: "relic",
+total: full.total,
+name: chosenRelic.name || "Relique custom",
+details: full
+};
+}
+const editorEval = evaluateWithCustom(getCustomFromInputs(), ctx);
+return {
+mode: "editor",
+total: editorEval.total,
+name: "Editeur courant",
+details: editorEval
+};
+}
+
+function clamp(value, min, max) {
+return Math.max(min, Math.min(max, value));
+}
+
+function getNewRelicScenarioInputs() {
+return {
+worst: {
+uptime: clamp(num("sc_uptime_worst"), 0, 100) / 100,
+targets: Math.max(0, num("sc_targets_worst")),
+convert: clamp(num("sc_convert_worst"), 0, 200) / 100,
+risk: clamp(num("sc_risk_worst"), 0, 300) / 100
+},
+avg: {
+uptime: clamp(num("sc_uptime_avg"), 0, 100) / 100,
+targets: Math.max(0, num("sc_targets_avg")),
+convert: clamp(num("sc_convert_avg"), 0, 200) / 100,
+risk: clamp(num("sc_risk_avg"), 0, 300) / 100
+},
+best: {
+uptime: clamp(num("sc_uptime_best"), 0, 100) / 100,
+targets: Math.max(0, num("sc_targets_best")),
+convert: clamp(num("sc_convert_best"), 0, 200) / 100,
+risk: clamp(num("sc_risk_best"), 0, 300) / 100
+}
+};
+}
+
+function applyScenarioToCustom(custom, scenario) {
+const cfg = { ...DEFAULT_CUSTOM, ...custom };
+cfg.b_cond_uptime = clamp(cfg.b_cond_uptime * scenario.uptime, 0, 100);
+cfg.b_mental_targets = Math.max(0, cfg.b_mental_targets * scenario.targets);
+cfg.b_extra_attack_factor = clamp(cfg.b_extra_attack_factor * scenario.convert, 0, 100);
+cfg.b_control_factor = clamp(cfg.b_control_factor * scenario.convert, 0, 100);
+cfg.b_enemy_malus_uptime = clamp(cfg.b_enemy_malus_uptime * scenario.convert, 0, 100);
+cfg.b_intercept_factor = clamp(cfg.b_intercept_factor * scenario.convert, 0, 100);
+cfg.b_heal_efficiency = clamp(cfg.b_heal_efficiency * scenario.convert, 0, 100);
+cfg.b_utility = cfg.b_utility * scenario.convert;
+cfg.b_self_on_miss = Math.max(0, cfg.b_self_on_miss * scenario.risk);
+cfg.b_self_flat = Math.max(0, cfg.b_self_flat * scenario.risk);
+return cfg;
+}
+
+function evaluateRelicRecordCompleteScenario(record, ctx, scenario) {
+const safe = normalizeSavedRelic(record || createEmptyCustomRelic());
+const passiveEval = evaluateWithCustom(applyScenarioToCustom(safe.passive, scenario), ctx);
+const active1Eval = evaluateWithCustom(applyScenarioToCustom(safe.active1, scenario), ctx);
+const active2Eval = evaluateWithCustom(applyScenarioToCustom(safe.active2, scenario), ctx);
+return passiveEval.total + active1Eval.total + active2Eval.total;
+}
+
+function evaluateNewRelicScenarioScores(ctx) {
+const scenarios = getNewRelicScenarioInputs();
+const source = document.getElementById("custom_compare_source").value;
+
+let worst = 0;
+let avg = 0;
+let best = 0;
+
+if (source === "relic") {
+const chosenRelic = getSelectedCustomRelicRecord();
+worst = evaluateRelicRecordCompleteScenario(chosenRelic, ctx, scenarios.worst);
+avg = evaluateRelicRecordCompleteScenario(chosenRelic, ctx, scenarios.avg);
+best = evaluateRelicRecordCompleteScenario(chosenRelic, ctx, scenarios.best);
+} else {
+const editor = getCustomFromInputs();
+worst = evaluateWithCustom(applyScenarioToCustom(editor, scenarios.worst), ctx).total;
+avg = evaluateWithCustom(applyScenarioToCustom(editor, scenarios.avg), ctx).total;
+best = evaluateWithCustom(applyScenarioToCustom(editor, scenarios.best), ctx).total;
+}
+
+const harm = (NEW_RELIC_SCENARIO_WEIGHTS.worst * worst) +
+(NEW_RELIC_SCENARIO_WEIGHTS.avg * avg) +
+(NEW_RELIC_SCENARIO_WEIGHTS.best * best);
+
+return { worst, avg, best, harm };
+}
+
+function evaluateRecordScenarioScores(record, ctx) {
+const scenarios = getNewRelicScenarioInputs();
+const worst = evaluateRelicRecordCompleteScenario(record, ctx, scenarios.worst);
+const avg = evaluateRelicRecordCompleteScenario(record, ctx, scenarios.avg);
+const best = evaluateRelicRecordCompleteScenario(record, ctx, scenarios.best);
+const harm = (NEW_RELIC_SCENARIO_WEIGHTS.worst * worst) +
+(NEW_RELIC_SCENARIO_WEIGHTS.avg * avg) +
+(NEW_RELIC_SCENARIO_WEIGHTS.best * best);
+return { worst, avg, best, harm };
+}
+
+function getCustomComparisonScoreForMode(ctx, mode) {
+const source = document.getElementById("custom_compare_source").value;
+const modeKey = mode === "worst" ? "worst" : mode === "avg" ? "avg" : mode === "harm" ? "harm" : "best";
+
+if (source === "relic") {
+const chosenRelic = getSelectedCustomRelicRecord();
+const scenarioScores = evaluateRecordScenarioScores(chosenRelic, ctx);
+return {
+mode: "relic",
+total: scenarioScores[modeKey],
+name: chosenRelic.name || "Relique custom"
+};
+}
+
+const scenarioScores = evaluateNewRelicScenarioScores(ctx);
+return {
+mode: "editor",
+total: scenarioScores[modeKey],
+name: "Editeur courant"
+};
+}
+
+function renderNewRelicScenarioScores(ctx) {
+const scores = evaluateNewRelicScenarioScores(ctx);
+document.getElementById("sc_score_worst").textContent = scores.worst.toFixed(2);
+document.getElementById("sc_score_avg").textContent = scores.avg.toFixed(2);
+document.getElementById("sc_score_best").textContent = scores.best.toFixed(2);
+document.getElementById("sc_score_harm").textContent = scores.harm.toFixed(2);
+}
+
+function getReferenceModeLabel(mode) {
+if (mode === "harm") return "harmonisee";
+if (mode === "avg") return "moyenne";
+if (mode === "worst") return "au pire";
+return "au mieux";
+}
+
+function getRelicModeModel(relicName) {
+return RELIC_MODE_MODELS[relicName] || DEFAULT_RELIC_MODE_MODEL;
+}
+
+function getHarmonizationToleranceForRelic(relicName) {
+return RELIC_MODE_MODELS[relicName] ? HARMONIZATION_TOLERANCE.strict : HARMONIZATION_TOLERANCE.permissive;
+}
+
+function getRelicModeScenarioText(relicName, mode) {
+const model = getRelicModeModel(relicName);
+if (mode === "harm") return "Mix 25% pire + 50% moyen + 25% mieux (avec contextes relique).";
+if (mode === "worst") return model.labels.worst;
+if (mode === "avg") return model.labels.avg;
+return model.labels.best;
+}
+
+function getRelicReferenceScore(relic, ctx, pv, mode) {
+const best = getBestPresetForRelic(relic, ctx, pv);
+const scores = best.breakdown.map((item) => item.evaluation.total);
+if (!scores.length) {
+return {
+score: 0,
+modeLabel: getReferenceModeLabel(mode),
+scenarioText: getRelicModeScenarioText(relic.name, mode),
+best
+};
+}
+
+const passiveScores = best.breakdown.filter((item) => item.kind === "passive").map((item) => item.evaluation.total);
+const activeScores = best.breakdown.filter((item) => item.kind === "active").map((item) => item.evaluation.total);
+
+const bestPassive = passiveScores.length ? Math.max(...passiveScores) : 0;
+const worstPassive = passiveScores.length ? Math.min(...passiveScores) : 0;
+const avgPassive = passiveScores.length ? (passiveScores.reduce((acc, value) => acc + value, 0) / passiveScores.length) : 0;
+
+const sortedActivesAsc = [...activeScores].sort((a, b) => a - b);
+const sortedActivesDesc = [...activeScores].sort((a, b) => b - a);
+const bestActivePair = (sortedActivesDesc[0] || 0) + (sortedActivesDesc[1] || 0);
+const worstActivePair = (sortedActivesAsc[0] || 0) + (sortedActivesAsc[1] || 0);
+
+let avgActivePair = 0;
+if (activeScores.length >= 2) {
+let sumPairs = 0;
+let countPairs = 0;
+for (let i = 0; i < activeScores.length; i++) {
+for (let j = i + 1; j < activeScores.length; j++) {
+sumPairs += activeScores[i] + activeScores[j];
+countPairs += 1;
+}
+}
+avgActivePair = countPairs > 0 ? (sumPairs / countPairs) : 0;
+} else if (activeScores.length === 1) {
+avgActivePair = activeScores[0];
+}
+
+const bestFull = bestPassive + bestActivePair;
+const avgFull = avgPassive + avgActivePair;
+const worstFull = worstPassive + worstActivePair;
+
+const model = getRelicModeModel(relic.name);
+const bestAdjusted = bestFull * (model.best || 1);
+const avgAdjusted = avgFull * (model.avg || 1);
+const worstAdjusted = worstFull * (model.worst || 1);
+
+let score = bestAdjusted;
+if (mode === "avg") score = avgAdjusted;
+if (mode === "worst") score = worstAdjusted;
+if (mode === "harm") score = (0.25 * worstAdjusted) + (0.50 * avgAdjusted) + (0.25 * bestAdjusted);
+
+return {
+score,
+modeLabel: getReferenceModeLabel(mode),
+scenarioText: getRelicModeScenarioText(relic.name, mode),
+best
+};
+}
+
+
+function applyViewMenu() {
+const view = window.__viewMode || "all";
+for (const panel of document.querySelectorAll(".view-section")) {
+const panelViews = (panel.getAttribute("data-view") || "").split(/\s+/).filter(Boolean);
+const visible = view === "all" || panelViews.includes(view);
+panel.classList.toggle("view-hidden", !visible);
+}
+
+for (const bubble of document.querySelectorAll(".menu-bubble")) {
+bubble.classList.toggle("active", bubble.getAttribute("data-view-target") === view);
+}
+}
+
+function setViewMode(view) {
+window.__viewMode = view;
+applyViewMenu();
+}
+
+function renderCustomRelicBuilder() {
+const ctx = getEvaluationContext();
+const pv = num("pv");
+const targets = getCreatorBudgetTargets(ctx, pv);
+document.getElementById("builder_budget_total").textContent = targets.total.toFixed(2);
+document.getElementById("builder_budget_passive").textContent = targets.passive.toFixed(2);
+document.getElementById("builder_budget_active1").textContent = targets.active1.toFixed(2);
+document.getElementById("builder_budget_active2").textContent = targets.active2.toFixed(2);
+const slots = [
+{ key: "passive", prefix: "slot_passive", target: targets.passive },
+{ key: "active1", prefix: "slot_active1", target: targets.active1 },
+{ key: "active2", prefix: "slot_active2", target: targets.active2 }
+];
+
+for (const slot of slots) {
+const cfg = customRelicBuilder[slot.key] || { ...DEFAULT_CUSTOM };
+const evaluation = evaluateWithCustom(cfg, ctx);
+const gap = evaluation.total - slot.target;
+const slotTolerance = HARMONIZATION_TOLERANCE.permissive;
+const card = document.querySelector(".module-card[data-slot='" + slot.key + "']");
+if (card) card.classList.toggle("active-slot", currentEditorSlot === slot.key);
+document.getElementById(slot.prefix + "_total").textContent = evaluation.total.toFixed(2);
+document.getElementById(slot.prefix + "_target").textContent = slot.target.toFixed(2);
+document.getElementById(slot.prefix + "_gap").textContent = gap.toFixed(2);
+document.getElementById(slot.prefix + "_gap").className = gap > slotTolerance ? "delta-neg" : gap < -slotTolerance ? "delta-pos" : "delta-zero";
+document.getElementById(slot.prefix + "_status").textContent = scoreVerdict(evaluation.total);
+document.getElementById(slot.prefix + "_status").className = scoreClass(evaluation.total);
+document.getElementById(slot.prefix + "_off").textContent = evaluation.offenseGain.toFixed(2);
+document.getElementById(slot.prefix + "_def").textContent = evaluation.defenseGain.toFixed(2);
+document.getElementById(slot.prefix + "_back").textContent = evaluation.backlash.toFixed(2);
+document.getElementById(slot.prefix + "_charge").textContent = String(evaluation.chargeCost);
+}
+}
+
+function getSlotLabel(slotKey) {
+if (slotKey === "passive") return "Passif";
+if (slotKey === "active1") return "Actif 1";
+if (slotKey === "active2") return "Actif 2";
+return "Module";
+}
+
+function loadSlotToEditor(slotKey) {
+setCustomInputs(customRelicBuilder[slotKey] || { ...DEFAULT_CUSTOM });
+document.getElementById("preset").value = "none";
+calculate();
+}
+
+function openEditorModal(slotKey) {
+currentEditorSlot = slotKey;
+loadSlotToEditor(slotKey);
+document.getElementById("editor_modal_title").textContent = "Editeur du " + getSlotLabel(slotKey);
+document.getElementById("editor_modal_subtitle").textContent = "Configure le " + getSlotLabel(slotKey).toLowerCase() + " puis sauvegarde-le directement dans ta relique custom.";
+document.getElementById("editor_modal_backdrop").classList.remove("view-hidden");
+renderCustomRelicBuilder();
+calculate();
+}
+
+function closeEditorModal() {
+currentEditorSlot = null;
+document.getElementById("editor_modal_backdrop").classList.add("view-hidden");
+renderCustomRelicBuilder();
+}
+
+function saveEditorModalToSlot() {
+if (!currentEditorSlot) return;
+customRelicBuilder[currentEditorSlot] = { ...DEFAULT_CUSTOM, ...getCustomFromInputs() };
+customRelicBuilder.name = document.getElementById("custom_name").value.trim();
+renderCustomRelicBuilder();
+closeEditorModal();
+renderGlobalComparison();
+renderFocusRelic();
+}
+
 function getBestPresetForRelic(relic, ctx, pv) {
 let bestPreset = null;
 let bestEval = null;
@@ -1024,7 +2089,7 @@ const breakdown = [];
 for (const presetId of relic.presets) {
 const cfg = getPresetConfig(presetId, pv);
 const evaluation = evaluateWithCustom(cfg, ctx);
-breakdown.push({ presetId, label: getPresetLabel(presetId), evaluation, cfg });
+breakdown.push({ presetId, label: getPresetLabel(presetId), kind: classifyPreset(presetId), evaluation, cfg });
 if (evaluation.total > bestScore) {
 bestScore = evaluation.total;
 bestPreset = presetId;
@@ -1036,28 +2101,150 @@ breakdown.sort((a, b) => b.evaluation.total - a.evaluation.total);
 return { bestPreset, bestEval, bestScore, breakdown };
 }
 
+function computeMedian(values) {
+if (!values.length) return 0;
+const sorted = [...values].sort((a, b) => a - b);
+const mid = Math.floor(sorted.length / 2);
+if (sorted.length % 2 === 0) return (sorted[mid - 1] + sorted[mid]) / 2;
+return sorted[mid];
+}
+
+function getBudgetTarget(ctx, pv) {
+const harmonizedScores = RELIC_GROUPS.map((relic) => getRelicReferenceScore(relic, ctx, pv, "harm").score).sort((a, b) => a - b);
+const median = computeMedian(harmonizedScores);
+if (harmonizedScores.length < 4) {
+return { target: median, median, coreMin: median, coreMax: median };
+}
+
+const start = Math.floor(harmonizedScores.length * 0.25);
+const end = Math.ceil(harmonizedScores.length * 0.75);
+const core = harmonizedScores.slice(start, end);
+const target = core.length ? (core.reduce((acc, value) => acc + value, 0) / core.length) : median;
+return {
+target,
+median,
+coreMin: core.length ? core[0] : median,
+coreMax: core.length ? core[core.length - 1] : median
+};
+}
+
+function getCreatorBudgetTargets(ctx, pv) {
+const budget = getBudgetTarget(ctx, pv);
+return {
+total: budget.target,
+passive: budget.target * CREATOR_BUDGET_SPLIT.passive,
+active1: budget.target * CREATOR_BUDGET_SPLIT.active1,
+active2: budget.target * CREATOR_BUDGET_SPLIT.active2,
+budget
+};
+}
+
+function getPresetIdsFromRelics() {
+const ids = [];
+for (const relic of RELIC_GROUPS) {
+for (const presetId of relic.presets) ids.push(presetId);
+}
+return ids;
+}
+
+function getCommonEffects(pv) {
+const effectRules = [
+{ key: "degats", label: "Degats sur touche", test: (cfg) => cfg.b_dmg_on_hit > 0 || cfg.b_cond_dmg > 0 || cfg.b_mult > 1 },
+{ key: "attaque", label: "Bonus attaque", test: (cfg) => cfg.b_att > 0 },
+{ key: "defense", label: "Mitigation / defense", test: (cfg) => cfg.b_incoming_reduction > 0 || cfg.b_enemy_att_malus > 0 || cfg.b_intercept > 0 },
+{ key: "controle", label: "Controle mental", test: (cfg) => cfg.b_mental_direct > 0 || cfg.b_mental_on_hit > 0 },
+{ key: "multi", label: "Multi-attaque", test: (cfg) => cfg.b_extra_attacks > 0 || cfg.b_extra_on_hit > 0 },
+{ key: "soin", label: "Soin", test: (cfg) => cfg.b_heal_now > 0 || cfg.b_heal_hot > 0 },
+{ key: "utilitaire", label: "Utilitaire / tempo", test: (cfg) => cfg.b_utility > 0 },
+{ key: "risque", label: "Risque / backlash", test: (cfg) => cfg.b_self_on_miss > 0 || cfg.b_self_flat > 0 }
+];
+
+const presetIds = getPresetIdsFromRelics();
+if (!presetIds.length) return [];
+
+const counts = effectRules.map((rule) => ({ ...rule, count: 0 }));
+for (const presetId of presetIds) {
+const cfg = getPresetConfig(presetId, pv);
+for (const item of counts) {
+if (item.test(cfg)) item.count += 1;
+}
+}
+
+const total = presetIds.length;
+return counts
+.filter((item) => item.count > 0)
+.map((item) => ({
+label: item.label,
+ratio: item.count / total,
+count: item.count,
+total
+}))
+.sort((a, b) => b.ratio - a.ratio);
+}
+
+function renderQuickRead(ctx, pv) {
+const latest = getLatestCreatedRelicRecord();
+const scores = evaluateRecordScenarioScores(latest, ctx);
+const name = latest.name && latest.name.trim() ? latest.name.trim() : "Brouillon courant";
+
+document.getElementById("quick_target").textContent = "Derniere relique: " + name;
+document.getElementById("quick_worst").textContent = scores.worst.toFixed(2);
+document.getElementById("quick_best").textContent = scores.best.toFixed(2);
+document.getElementById("quick_harm").textContent = scores.harm.toFixed(2);
+document.getElementById("quick_avg").textContent = scores.avg.toFixed(2);
+}
+
 function renderGlobalComparison() {
 const pv = num("pv");
 const ctx = getEvaluationContext();
-const customEval = evaluateWithCustom(getCustomFromInputs(), ctx);
+const existingMode = document.getElementById("compare_existing_mode").value;
+const customSource = getCustomComparisonScoreForMode(ctx, existingMode);
 const rows = RELIC_GROUPS.map((relic) => {
-const best = getBestPresetForRelic(relic, ctx, pv);
+const ref = getRelicReferenceScore(relic, ctx, pv, existingMode);
 return {
 name: relic.name,
-relicTotal: best.bestScore,
-customTotal: customEval.total,
-delta: customEval.total - best.bestScore
+relicTotal: ref.score,
+customTotal: customSource.total,
+delta: customSource.total - ref.score
 };
 }).sort((a, b) => b.delta - a.delta);
+
+const budget = getBudgetTarget(ctx, pv);
+
+document.getElementById("median_info").textContent = "Budget cible harmonisé: " + budget.target.toFixed(2) + " PV eco / charge | noyau " + budget.coreMin.toFixed(2) + " - " + budget.coreMax.toFixed(2) + " | affichage " + getReferenceModeLabel(existingMode) + " | tol. nouvelles reliques ±" + HARMONIZATION_TOLERANCE.permissive.toFixed(2);
+renderQuickRead(ctx, pv);
 
 const tbody = document.getElementById("compare_rows");
 tbody.innerHTML = rows.map((row) => {
 const deltaClass = row.delta > 0 ? "delta-pos" : row.delta < 0 ? "delta-neg" : "delta-zero";
+const toMedian = row.relicTotal - budget.target;
+const toMedianClass = toMedian > 0 ? "delta-neg" : toMedian < 0 ? "delta-pos" : "delta-zero";
+const tolerance = getHarmonizationToleranceForRelic(row.name);
+let recommendation = "Conserver";
+let recommendationClass = "rec-ok";
+if (toMedian > tolerance && toMedian <= HARMONIZATION_TOLERANCE.watch) {
+recommendation = "A surveiller -" + toMedian.toFixed(2);
+recommendationClass = "rec-down";
+}
+if (toMedian < -tolerance && toMedian >= -HARMONIZATION_TOLERANCE.watch) {
+recommendation = "A surveiller +" + Math.abs(toMedian).toFixed(2);
+recommendationClass = "rec-up";
+}
+if (toMedian > HARMONIZATION_TOLERANCE.watch) {
+recommendation = "Nerf ~" + toMedian.toFixed(2);
+recommendationClass = "rec-down";
+}
+if (toMedian < -HARMONIZATION_TOLERANCE.watch) {
+recommendation = "Buff ~" + Math.abs(toMedian).toFixed(2);
+recommendationClass = "rec-up";
+}
 return "<tr>" +
 "<td>" + row.name + "</td>" +
 "<td>" + row.relicTotal.toFixed(2) + "</td>" +
 "<td>" + row.customTotal.toFixed(2) + "</td>" +
 "<td class='" + deltaClass + "'>" + row.delta.toFixed(2) + "</td>" +
+"<td class='" + toMedianClass + "'>" + toMedian.toFixed(2) + "</td>" +
+"<td class='" + recommendationClass + "'>" + recommendation + "</td>" +
 "</tr>";
 }).join("");
 }
@@ -1065,33 +2252,33 @@ return "<tr>" +
 function renderFocusRelic() {
 const relicName = document.getElementById("focus_relic").value;
 const focusPanel = document.getElementById("focus_compare");
-const summaryPanel = document.getElementById("relic_summary");
 const relic = RELIC_GROUPS.find((item) => item.name === relicName);
 
 if (!relic) {
-focusPanel.innerHTML = "<div class='detail-item'>Choisis une relique pour voir l'ecart detaille preset par preset.</div>";
-summaryPanel.innerHTML = "<div class='detail-item'>Le resume detaille s'affiche ici apres selection d'une relique.</div>";
+focusPanel.innerHTML = "<div class='detail-item'>Choisis une relique.</div>";
 return;
 }
 
 const pv = num("pv");
 const ctx = getEvaluationContext();
-const customEval = evaluateWithCustom(getCustomFromInputs(), ctx);
+const customSource = getCustomComparisonScore(ctx);
+const existingMode = document.getElementById("compare_existing_mode").value;
+const ref = getRelicReferenceScore(relic, ctx, pv, existingMode);
 const best = getBestPresetForRelic(relic, ctx, pv);
-const delta = customEval.total - best.bestScore;
+const delta = customSource.total - ref.score;
 const deltaClass = delta > 0 ? "delta-pos" : delta < 0 ? "delta-neg" : "delta-zero";
 
 focusPanel.innerHTML = "<div class='detail-item'>" +
 "<h4>Comparaison directe : " + relic.name + "</h4>" +
 "<div class='summary-grid'>" +
-"<div class='summary-tile'><strong>Custom</strong><span class='metric-large'>" + customEval.total.toFixed(2) + "</span></div>" +
-"<div class='summary-tile'><strong>Meilleur preset</strong><span class='metric-large'>" + best.bestScore.toFixed(2) + "</span></div>" +
+"<div class='summary-tile'><strong>Custom (" + customSource.name + ")</strong><span class='metric-large'>" + customSource.total.toFixed(2) + "</span></div>" +
+"<div class='summary-tile'><strong>Reference " + ref.modeLabel + "</strong><span class='metric-large'>" + ref.score.toFixed(2) + "</span></div>" +
 "<div class='summary-tile'><strong>Delta</strong><span class='metric-large " + deltaClass + "'>" + delta.toFixed(2) + "</span></div>" +
-"<div class='summary-tile'><strong>Verdict</strong><span class='metric-large " + scoreClass(best.bestScore) + "'>" + scoreVerdict(best.bestScore) + "</span></div>" +
+"<div class='summary-tile'><strong>Verdict</strong><span class='metric-large " + scoreClass(ref.score) + "'>" + scoreVerdict(ref.score) + "</span></div>" +
 "</div>" +
 "</div>" +
 best.breakdown.map((item) => {
-const itemDelta = customEval.total - item.evaluation.total;
+const itemDelta = customSource.total - item.evaluation.total;
 const itemDeltaClass = itemDelta > 0 ? "delta-pos" : itemDelta < 0 ? "delta-neg" : "delta-zero";
 return "<div class='detail-item'>" +
 "<h4>" + item.label + "</h4>" +
@@ -1101,24 +2288,6 @@ return "<div class='detail-item'>" +
 "</div>";
 }).join("");
 
-summaryPanel.innerHTML = "<div class='detail-item'>" +
-"<h4>" + relic.name + "</h4>" +
-"<div class='small'>" + relic.role + "</div>" +
-"<p>" + relic.summary + "</p>" +
-"<div class='summary-grid'>" +
-"<div class='summary-tile'><strong>Meilleur preset</strong><span class='metric-large'>" + getPresetLabel(best.bestPreset) + "</span></div>" +
-"<div class='summary-tile'><strong>Score retenu</strong><span class='metric-large " + scoreClass(best.bestScore) + "'>" + best.bestScore.toFixed(2) + "</span></div>" +
-"<div class='summary-tile'><strong>Lecture</strong><span class='metric-large " + scoreClass(best.bestScore) + "'>" + scoreVerdict(best.bestScore) + "</span></div>" +
-"<div class='summary-tile'><strong>Note</strong><span class='metric-large'>" + relic.presets.length + " presets</span></div>" +
-"</div>" +
-"<p>" + buildResultTone(best.bestScore) + "</p>" +
-"</div>" +
-best.breakdown.map((item) => {
-return "<div class='detail-item'>" +
-"<h4>" + item.label + "</h4>" +
-"<div class='small'>Score <span class='" + scoreClass(item.evaluation.total) + "'>" + item.evaluation.total.toFixed(2) + "</span> | Offense " + item.evaluation.offenseGain.toFixed(2) + " | Defense " + item.evaluation.defenseGain.toFixed(2) + " | Backlash " + item.evaluation.backlash.toFixed(2) + "</div>" +
-"</div>";
-}).join("");
 }
 
 function calculate() {
@@ -1143,7 +2312,10 @@ document.getElementById("delta_self").innerText = evalResult.backlash.toFixed(2)
 document.getElementById("result").innerText = evalResult.total.toFixed(2) + " PV eco / charge";
 
 window.__pv = pv;
+renderCustomRelicBuilder();
 renderFocusRelic();
+renderQuickRead(ctx, pv);
+renderNewRelicScenarioScores(ctx);
 }
 
 function applyPreset() {
@@ -1156,7 +2328,7 @@ function loadSavedRelics() {
 try {
 const raw = localStorage.getItem(STORAGE_KEY);
 const parsed = raw ? JSON.parse(raw) : [];
-return Array.isArray(parsed) ? parsed : [];
+return Array.isArray(parsed) ? parsed.map(normalizeSavedRelic) : [];
 } catch (_) {
 return [];
 }
@@ -1172,8 +2344,24 @@ const select = document.getElementById("custom_relics");
 select.innerHTML = "";
 if (!list.length) {
 select.innerHTML = "<option value=''>Aucune relique custom enregistree</option>";
+refreshCustomCompareRelicSelect();
 return;
 }
+for (const item of list) {
+const option = document.createElement("option");
+option.value = item.name;
+option.textContent = item.name;
+select.appendChild(option);
+}
+
+refreshCustomCompareRelicSelect();
+}
+
+function refreshCustomCompareRelicSelect() {
+const list = loadSavedRelics();
+const select = document.getElementById("custom_compare_relic");
+if (!select) return;
+select.innerHTML = "<option value='__current__'>Relique custom : brouillon courant</option>";
 for (const item of list) {
 const option = document.createElement("option");
 option.value = item.name;
@@ -1189,14 +2377,20 @@ alert("Donne un nom a ta relique custom avant sauvegarde.");
 return;
 }
 const list = loadSavedRelics();
-const config = getCustomFromInputs();
+customRelicBuilder.name = name;
 const idx = list.findIndex((item) => item.name === name);
-const record = { name, config };
+const record = {
+name,
+passive: { ...DEFAULT_CUSTOM, ...customRelicBuilder.passive },
+active1: { ...DEFAULT_CUSTOM, ...customRelicBuilder.active1 },
+active2: { ...DEFAULT_CUSTOM, ...customRelicBuilder.active2 }
+};
 if (idx >= 0) list[idx] = record;
 else list.push(record);
 saveSavedRelics(list);
 refreshCustomRelicSelect();
 document.getElementById("custom_relics").value = name;
+document.getElementById("custom_compare_relic").value = name;
 }
 
 function loadSelectedCustomRelic() {
@@ -1204,8 +2398,9 @@ const name = document.getElementById("custom_relics").value;
 if (!name) return;
 const found = loadSavedRelics().find((item) => item.name === name);
 if (!found) return;
-document.getElementById("custom_name").value = found.name;
-setCustomInputs({ ...DEFAULT_CUSTOM, ...found.config });
+customRelicBuilder = normalizeSavedRelic(found);
+setBuilderName(customRelicBuilder.name);
+setCustomInputs(customRelicBuilder.passive);
 document.getElementById("preset").value = "none";
 calculate();
 }
@@ -1226,9 +2421,48 @@ document.getElementById("preset").addEventListener("change", applyPreset);
 document.getElementById("save_custom").addEventListener("click", saveCurrentCustomRelic);
 document.getElementById("load_custom").addEventListener("click", loadSelectedCustomRelic);
 document.getElementById("delete_custom").addEventListener("click", deleteSelectedCustomRelic);
+document.getElementById("custom_name").addEventListener("input", (event) => {
+customRelicBuilder.name = event.target.value;
+});
+document.getElementById("edit_passive").addEventListener("click", () => openEditorModal("passive"));
+document.getElementById("edit_active1").addEventListener("click", () => openEditorModal("active1"));
+document.getElementById("edit_active2").addEventListener("click", () => openEditorModal("active2"));
+document.getElementById("close_editor_modal").addEventListener("click", closeEditorModal);
+document.getElementById("cancel_editor_modal").addEventListener("click", closeEditorModal);
+document.getElementById("save_editor_modal").addEventListener("click", saveEditorModalToSlot);
+document.getElementById("editor_modal_backdrop").addEventListener("click", (event) => {
+if (event.target.id === "editor_modal_backdrop") closeEditorModal();
+});
 document.getElementById("compare_btn").addEventListener("click", renderGlobalComparison);
 document.getElementById("compare_focus_btn").addEventListener("click", renderFocusRelic);
 document.getElementById("focus_relic").addEventListener("change", renderFocusRelic);
+document.getElementById("custom_compare_source").addEventListener("change", () => {
+renderGlobalComparison();
+renderFocusRelic();
+});
+document.getElementById("custom_compare_relic").addEventListener("change", () => {
+renderGlobalComparison();
+renderFocusRelic();
+});
+document.getElementById("compare_existing_mode").addEventListener("change", () => {
+renderGlobalComparison();
+renderFocusRelic();
+});
+document.getElementById("tutorial_start_btn").addEventListener("click", startTutorial);
+document.getElementById("tutorial_refuse_btn").addEventListener("click", refuseTutorial);
+document.getElementById("tutorial_prev_btn").addEventListener("click", prevTutorialStep);
+document.getElementById("tutorial_next_btn").addEventListener("click", nextTutorialStep);
+document.getElementById("tutorial_skip_btn").addEventListener("click", skipTutorial);
+document.getElementById("tutorial_backdrop").addEventListener("click", (event) => {
+if (event.target.id !== "tutorial_backdrop") return;
+if (tutorialStepIndex < 0) refuseTutorial();
+else skipTutorial();
+});
+for (const button of document.querySelectorAll(".menu-bubble")) {
+button.addEventListener("click", () => {
+setViewMode(button.getAttribute("data-view-target"));
+});
+}
 
 for (const el of document.querySelectorAll("input,select")) {
 if (el.id !== "preset" && el.id !== "focus_relic") {
@@ -1238,9 +2472,13 @@ el.addEventListener("change", calculate);
 }
 
 refreshCustomRelicSelect();
+refreshCustomCompareRelicSelect();
 populateFocusRelicSelect();
 calculate();
 renderGlobalComparison();
+renderCustomRelicBuilder();
+setViewMode("all");
+maybeStartTutorial();
 </script>
 </body>
 </html>
