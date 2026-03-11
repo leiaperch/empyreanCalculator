@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Calculateur de reliques</title>
+<style>
+html {
+color-scheme: light;
+}
+
+:root {
+--bg: #f4efe6;
+--bg-accent: #e7dcc7;
+--panel: rgba(255,255,255,0.88);
+--panel-border: rgba(116, 97, 68, 0.16);
+--text: #1f2937;
+--muted: #5b6470;
+--gold: #b07a2a;
+--gold-soft: #f6e8bf;
+--line: #e7dfcf;
+--shadow: 0 18px 40px rgba(74, 56, 28, 0.10);
+}
+
+body {
+font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+background:
+radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 28%),
+linear-gradient(135deg, var(--bg) 0%, #f8f5ee 45%, var(--bg-accent) 100%);
+padding: 24px;
+color: var(--text);
+margin: 0;
+}
+
+h1 {
+margin: 0;
+font-size: 34px;
+letter-spacing: 0.02em;
+}
+
+h2, h3 {
+margin-top: 0;
+}
+
+.app-shell {
+max-width: 1400px;
+margin: 0 auto;
+}
+
+.hero {
+display: grid;
+grid-template-columns: 1.4fr 0.9fr;
+gap: 16px;
+margin-bottom: 14px;
+}
+
+.hero-card {
+background: linear-gradient(145deg, rgba(255,255,255,0.92), rgba(247,241,229,0.92));
+border: 1px solid var(--panel-border);
+border-radius: 20px;
+padding: 22px;
+box-shadow: var(--shadow);
+}
+
+.hero-copy {
+font-size: 15px;
+line-height: 1.6;
+color: var(--muted);
+max-width: 70ch;
+}
+
+.hero-badge-row {
+display: flex;
+gap: 10px;
+flex-wrap: wrap;
+margin-top: 14px;
+}
+
+.badge {
+display: inline-flex;
+align-items: center;
+padding: 8px 12px;
+border-radius: 999px;
+background: var(--gold-soft);
+color: #6f4d18;
+font-size: 13px;
+font-weight: 700;
+}
+
+.layout-grid {
+display: grid;
+grid-template-columns: minmax(0, 1.2fr) minmax(340px, 0.8fr);
+gap: 16px;
+align-items: start;
+}
+
+.stack {
+display: grid;
+gap: 14px;
+}
+
+.panel {
+background: var(--panel);
+backdrop-filter: blur(10px);
+padding: 18px;
+border-radius: 18px;
+margin-bottom: 14px;
+box-shadow: var(--shadow);
+border: 1px solid var(--panel-border);
+}
+
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 12px 14px;
+}
+
+label {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 8px;
+font-size: 14px;
+padding: 10px 12px;
+border-radius: 12px;
+background: rgba(255,255,255,0.75);
+border: 1px solid rgba(176, 122, 42, 0.10);
+}
+
+input, select {
+width: 104px;
+padding: 8px 10px;
+border-radius: 10px;
+border: 1px solid #d8d2c6;
+background: rgba(255,255,255,0.96);
+color: var(--text);
+}
+
+select.wide {
+width: 100%;
+}
+
+button {
+padding: 10px 18px;
+font-size: 15px;
+cursor: pointer;
+border: 0;
+border-radius: 12px;
+background: linear-gradient(135deg, #2d4b46, #466861);
+color: white;
+font-weight: 700;
+box-shadow: 0 10px 22px rgba(45, 75, 70, 0.18);
+}
+
+.result {
+font-size: 28px;
+font-weight: bold;
+color: #24463d;
+}
+
+.small {
+font-size: 12px;
+color: var(--muted);
+}
+
+.kpi {
+line-height: 1.9;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+font-size: 14px;
+overflow: hidden;
+border-radius: 12px;
+}
+
+th, td {
+border-bottom: 1px solid var(--line);
+padding: 10px 12px;
+text-align: left;
+}
+
+th {
+font-size: 12px;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: var(--muted);
+background: rgba(176, 122, 42, 0.08);
+}
+
+.delta-pos {
+color: #166534;
+font-weight: 700;
+}
+
+.delta-neg {
+color: #991b1b;
+font-weight: 700;
+}
+
+.delta-zero {
+color: #374151;
+font-weight: 700;
+}
+
+.actions {
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+align-items: center;
+}
+
+.inline-input {
+width: 220px;
+}
+
+.section-title {
+display: flex;
+justify-content: space-between;
+align-items: baseline;
+gap: 12px;
+margin-bottom: 10px;
+}
+
+.section-title p {
+margin: 0;
+font-size: 13px;
+color: var(--muted);
+}
+
+.summary-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 10px;
+margin-top: 12px;
+}
+
+.summary-tile {
+padding: 12px 14px;
+border-radius: 14px;
+background: rgba(255,255,255,0.78);
+border: 1px solid rgba(176, 122, 42, 0.10);
+}
+
+.summary-tile strong {
+display: block;
+font-size: 12px;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+color: var(--muted);
+margin-bottom: 6px;
+}
+
+.metric-large {
+font-size: 24px;
+font-weight: 700;
+color: #1b3b35;
+}
+
+.two-col {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 14px;
+}
+
+.detail-list {
+display: grid;
+gap: 10px;
+margin-top: 12px;
+}
+
+.detail-item {
+padding: 12px 14px;
+border-radius: 14px;
+background: rgba(255,255,255,0.76);
+border: 1px solid rgba(176, 122, 42, 0.12);
+}
+
+.detail-item h4 {
+margin: 0 0 6px 0;
+font-size: 15px;
+}
+
+.pill {
+display: inline-flex;
+padding: 5px 10px;
+border-radius: 999px;
+font-size: 12px;
+font-weight: 700;
+background: rgba(45, 75, 70, 0.10);
+color: #2d4b46;
+margin-right: 8px;
+}
+
+.score-ok {
+color: #166534;
+}
+
+.score-low {
+color: #9a3412;
+}
+
+.score-high {
+color: #991b1b;
+}
+
+.compact-select {
+min-width: 220px;
+width: auto;
+}
+
+@media (max-width: 1080px) {
+.hero,
+.layout-grid,
+.two-col {
+grid-template-columns: 1fr;
+}
+}
+</style>
+</head>
+
+<body>
+<div class="app-shell">
+<div class="hero">
+<div class="hero-card">
+<h1>Calculateur de reliques - Avancé</h1>
+<p class="hero-copy">Calibre tes reliques par charge, compare ton design custom au corpus existant, et lis une fiche détaillée relique par relique avec la meilleure configuration retenue, ses presets et sa lecture d'équilibrage.</p>
+<div class="hero-badge-row">
+<span class="badge">Budget cible flexible</span>
+<span class="badge">Comparateur global</span>
+<span class="badge">Comparateur individuel</span>
+<span class="badge">Résumé détaillé</span>
+</div>
+</div>
+<div class="hero-card">
+<div class="section-title">
+<h3>Lecture rapide</h3>
+<p>Cible actuelle recommandée: ~3 PV éco / charge</p>
+</div>
+<div class="summary-grid">
+<div class="summary-tile"><strong>Contrôle simple</strong><span class="metric-large">~2.8</span></div>
+<div class="summary-tile"><strong>Mitigation 50%</strong><span class="metric-large">~2.9</span></div>
+<div class="summary-tile"><strong>Paquet offensif</strong><span class="metric-large">~3.0</span></div>
+<div class="summary-tile"><strong>Attaque bonus</strong><span class="metric-large">~5.9</span></div>
+</div>
+</div>
+</div>
+
+<div class="layout-grid">
+<div class="stack">
+
+<div class="panel">
+<h3>Porteur</h3>
+<div class="grid">
+<label>ATT <input id="att" type="number" value="40"></label>
+<label>DEF <input id="def" type="number" value="40"></label>
+<label>PM <input id="pm" type="number" value="20"></label>
+<label>VOL <input id="vol" type="number" value="20"></label>
+<label>PV <input id="pv" type="number" value="12"></label>
+</div>
+</div>
+
+<div class="panel">
+<h3>Cible</h3>
+<div class="grid">
+<label>ATT <input id="e_att" type="number" value="40"></label>
+<label>DEF <input id="e_def" type="number" value="40"></label>
+<label>PM <input id="e_pm" type="number" value="20"></label>
+<label>VOL <input id="e_vol" type="number" value="20"></label>
+<label>PV <input id="e_pv" type="number" value="12"></label>
+</div>
+</div>
+
+<div class="panel">
+<h3>Modes de jet</h3>
+<div class="grid">
+<label>Jet attaque porteur
+<select id="att_mode">
+<option value="normal">Normal</option>
+<option value="adv">Avantage</option>
+<option value="dis">Desavantage</option>
+</select>
+</label>
+<label>Jet defense cible
+<select id="def_mode">
+<option value="normal">Normal</option>
+<option value="adv">Avantage</option>
+<option value="dis">Desavantage</option>
+</select>
+</label>
+<label>Jet PM porteur
+<select id="pm_mode">
+<option value="normal">Normal</option>
+<option value="adv">Avantage</option>
+<option value="dis">Desavantage</option>
+</select>
+</label>
+<label>Jet VOL cible
+<select id="vol_mode">
+<option value="normal">Normal</option>
+<option value="adv">Avantage</option>
+<option value="dis">Desavantage</option>
+</select>
+</label>
+</div>
+</div>
+
+<div class="panel">
+<h3>Preset relique / effet</h3>
+<select id="preset" class="wide">
+<option value="none">Aucun preset (custom pur)</option>
+<option value="zaban_passif">Zaban passif (+3 degats, +1 ATT conditionnel)</option>
+<option value="zaban_traitre">Zaban Mort aux traitres (+5 degats sur touche)</option>
+<option value="zaban_serment">Zaban Serment au-dela de la Mort (attaque bonus)</option>
+<option value="samawi_treve">Samawi Treve de l'Aube (controle mental direct)</option>
+<option value="samawi_aube_alt">Samawi Aube Alternative (2 cibles, perte de tour)</option>
+<option value="nishan_passif">Nishan passif (+2 ATT, +1 degat)</option>
+<option value="nishan_sentence">Nishan Sentence Finale (+3 ATT premiere attaque)</option>
+<option value="khashtar_passif">Khashtar passif (+1 ATT, +2 degats vs Offenseur)</option>
+<option value="khashtar_dette">Khashtar Dette de sang (x2 degats si touche, backlash si rate)</option>
+<option value="garmazan_passif">Garmazan passif (+1 ATT, +2 degats)</option>
+<option value="garmazan_fleche">Garmazan fleche (controle mental sur touche)</option>
+<option value="bahr_passif">Bahr passif (+2 ATT)</option>
+<option value="bahr_vague">Bahr Vague Interposee (reduction degats subis)</option>
+<option value="khiyal_passif">Khiyal/Hazar passif (+2 degats)</option>
+<option value="khiyal_voile">Voile du Filou (+2 ATT, ennemi -5 ATT)</option>
+<option value="taban_passif">Taban passif (+2 ATT)</option>
+<option value="taban_silence">Taban Silence de l'Ombre (furtivite defensive)</option>
+<option value="taban_cygne">Taban Coup du Cygne (+2 ATT premiere attaque)</option>
+<option value="saat_passif">Saat/Zaman passif (+2 degats)</option>
+<option value="saat_rythme">Rythme astral (attaque supplementaire sur touche)</option>
+<option value="akhtari_passif">Akhtari passif (+2 ATT)</option>
+<option value="akhtari_vision">Akhtari Vision Astrale (utilitaire)</option>
+<option value="akhtari_oeil">Akhtari Oeil de l'Invisible (utilitaire fort)</option>
+<option value="mishraq_passif">Mishraq passif (+2 DEF)</option>
+<option value="mishraq_voeu">Mishraq Prise de Voeu (soin PV/4)</option>
+<option value="ilyr_grace">Ilyr Grace d'Orus (soin + DEF)</option>
+<option value="ilyr_partage">Ilyr Partage de la Douleur (mitigation)</option>
+<option value="saelthir_voix">Saelthir Voix de l'Aurore (charme direct)</option>
+<option value="saelthir_eclat">Saelthir Eclat du Soleil Hardi (+2 ATT)</option>
+<option value="nimthalas_passif">Nimthalas passif (+2 degats)</option>
+<option value="nimthalas_voile">Nimthalas Voile de la Veillee (protection -5 ATT adverse)</option>
+<option value="nimthalas_jugement">Nimthalas Jugement du Dernier Souffle (+3 ATT, +3 degats)</option>
+<option value="lomineth_interposition">Lomineth Interposition Silencieuse (mitigation 50%)</option>
+<option value="lomineth_regard">Lomineth Regard de la Sentinelle (+2 ATT conditionnel)</option>
+<option value="thalanir_passif">Thalanir passif (defense mentale)</option>
+<option value="thalanir_mur">Thalanir Mur de Cristal (anti-mental de zone)</option>
+<option value="thalanir_replique">Thalanir Replique Mentale (annulation/retour mental)</option>
+<option value="aeltharion_lame">Aeltharion passif forme lame (+1 ATT)</option>
+<option value="aeltharion_bouclier">Aeltharion passif forme bouclier (+1 DEF)</option>
+<option value="aeltharion_danse">Aeltharion Danse des Deux Soleils (bouclier +5 sur 1ere attaque)</option>
+<option value="aeltharion_horizon">Aeltharion Frappe de l'Horizon (+3 degats)</option>
+<option value="aeltharion_egide">Aeltharion Egide Reverberante (contre defensive)</option>
+<option value="solvaris_aube">Solvaris Aiguille de l'Aube Silencieuse (+2 ATT, brulure)</option>
+<option value="solvaris_traqueur">Solvaris Piqure du Soleil Traqueur (+2 ATT, burst)</option>
+<option value="thalerys_passif">Thalerys passif (+2 ATT)</option>
+<option value="thalerys_fracture">Thalerys Fracture crepusculaire (AOE partielle)</option>
+<option value="thalerys_danse">Thalerys Danse d'Eclipse (degats auto de zone)</option>
+<option value="eryndel_passif">Eryndel passif (+2 ATT)</option>
+<option value="eryndel_piqure">Eryndel Piqure du Crepuscule (sommeil sur touche)</option>
+<option value="eryndel_brume">Eryndel Brume des Songes (controle de zone)</option>
+</select>
+<p class="small">Le preset remplit les bonus mecaniques; tu peux ensuite tout modifier a la main.</p>
+</div>
+
+<div class="panel">
+<h3>Bonus custom (attaque/controle/defense)</h3>
+<div class="grid">
+<label>Bonus ATT porteur <input id="b_att" type="number" value="0"></label>
+<label>Bonus DEF cible <input id="b_edef" type="number" value="0"></label>
+<label>Bonus PM porteur <input id="b_pm" type="number" value="0"></label>
+<label>Bonus VOL cible <input id="b_evol" type="number" value="0"></label>
+<label>Degats fixes a la touche <input id="b_dmg_on_hit" type="number" value="0"></label>
+<label>Degats conditionnels a la touche <input id="b_cond_dmg" type="number" value="0"></label>
+<label>Multiplicateur degats si touche <input id="b_mult" type="number" step="0.1" value="1"></label>
+<label>Attaques supplementaires immediates <input id="b_extra_attacks" type="number" value="0"></label>
+<label>Attaques bonus sur touche <input id="b_extra_on_hit" type="number" value="0"></label>
+<label>Malus ATT adverse <input id="b_enemy_att_malus" type="number" value="0"></label>
+<label>Reduction degats subis (%) <input id="b_incoming_reduction" type="number" value="0"></label>
+<label>Intercepter une attaque adverse (0/1) <input id="b_intercept" type="number" value="0"></label>
+<label>Controle mental direct (0/1) <input id="b_mental_direct" type="number" value="0"></label>
+<label>Controle mental sur touche (0/1) <input id="b_mental_on_hit" type="number" value="0"></label>
+<label>Nb cibles controlees <input id="b_mental_targets" type="number" value="1"></label>
+<label>Degats auto si actif rate <input id="b_self_on_miss" type="number" value="0"></label>
+<label>Degats auto fixes (toujours) <input id="b_self_flat" type="number" value="0"></label>
+<label>Soin immediat <input id="b_heal_now" type="number" value="0"></label>
+<label>Soin total sur duree <input id="b_heal_hot" type="number" value="0"></label>
+<label>Chance effet conditionnel (%) <input id="b_cond_uptime" type="number" value="100"></label>
+<label>Valeur attaque bonus (%) <input id="b_extra_attack_factor" type="number" value="100"></label>
+<label>Valeur controle (%) <input id="b_control_factor" type="number" value="100"></label>
+<label>Realisation malus adverse (%) <input id="b_enemy_malus_uptime" type="number" value="100"></label>
+<label>Valeur interception (%) <input id="b_intercept_factor" type="number" value="100"></label>
+<label>Efficacite du soin (%) <input id="b_heal_efficiency" type="number" value="100"></label>
+<label>Valeur utilitaire / tempo <input id="b_utility" type="number" step="0.1" value="0"></label>
+<label>Charges consommees <input id="b_charge_cost" type="number" min="1" step="1" value="1"></label>
+</div>
+</div>
+
+<div class="panel">
+<h3>Createur de relique custom</h3>
+<div class="actions">
+<input id="custom_name" class="inline-input" type="text" placeholder="Nom de la relique custom">
+<button id="save_custom" type="button">Sauvegarder la config actuelle</button>
+</div>
+<br>
+<div class="actions">
+<select id="custom_relics" class="inline-input">
+<option value="">Aucune relique custom enregistree</option>
+</select>
+<button id="load_custom" type="button">Charger dans les bonus</button>
+<button id="delete_custom" type="button">Supprimer</button>
+</div>
+<p class="small">Le createur enregistre tous les champs du bloc bonus custom.</p>
+</div>
+
+<div class="panel">
+<div class="section-title">
+<h3>Comparateur global</h3>
+<p>Classement de ton custom contre l'ensemble des reliques.</p>
+</div>
+<div class="actions">
+<button id="compare_btn" type="button">Comparer ma config custom aux reliques existantes</button>
+</div>
+<p class="small">Comparaison par relique, avec une valeur estimee par charge / activation et non plus par sequence infinie.</p>
+<table>
+<thead>
+<tr>
+<th>Relique</th>
+<th>PV eco relique / charge</th>
+<th>PV eco custom / charge</th>
+<th>Delta custom - relique</th>
+</tr>
+</thead>
+<tbody id="compare_rows">
+<tr><td colspan="4">Clique sur comparer pour afficher le classement.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="panel">
+<div class="section-title">
+<h3>Comparateur individuel</h3>
+<p>Analyse une relique precise contre ton custom actuel.</p>
+</div>
+<div class="actions">
+<select id="focus_relic" class="compact-select"></select>
+<button id="compare_focus_btn" type="button">Comparer cette relique</button>
+</div>
+<div id="focus_compare" class="detail-list">
+<div class="detail-item">Choisis une relique pour voir l'ecart detaille preset par preset.</div>
+</div>
+</div>
+
+<div class="panel">
+<div class="section-title">
+<h3>Résumé détaillé</h3>
+<p>Fiche synthétique d'une relique avec meilleur preset et lecture d'équilibrage.</p>
+</div>
+<div id="relic_summary" class="detail-list">
+<div class="detail-item">Le résumé détaillé s'affiche ici après sélection d'une relique.</div>
+</div>
+</div>
+
+</div>
+
+<div class="stack">
+
+<div class="panel">
+<button onclick="calculate()">Calculer</button>
+</div>
+
+<div class="panel kpi">
+<h3>Reference combat</h3>
+Chance de toucher : <span id="hit"></span><br>
+Degats moyens par attaque : <span id="atk"></span><br>
+Degats moyens sur touche : <span id="onhit"></span><br>
+Valeur offensive de base par action : <span id="seq"></span><br>
+Chance de controle mental : <span id="mental"></span><br>
+Valeur offensive adverse par action : <span id="enemy_seq"></span>
+</div>
+
+<div class="panel kpi">
+<h3>Resultat avec bonus/preset</h3>
+Chance de toucher modifiee : <span id="m_hit"></span><br>
+Degats moyens modifies par attaque : <span id="m_atk"></span><br>
+Valeur offensive modifiee par action : <span id="m_seq"></span><br>
+Valeur offensive gagnee par charge : <span id="delta_off"></span><br>
+Valeur defensive gagnee par charge : <span id="delta_def"></span><br>
+Backlash moyen par charge : <span id="delta_self"></span><br>
+<div class="result" id="result"></div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+const STORAGE_KEY = "empyrean_custom_relics_v1";
+
+const DEFAULT_CUSTOM = {
+b_att: 0,
+b_edef: 0,
+b_pm: 0,
+b_evol: 0,
+b_dmg_on_hit: 0,
+b_cond_dmg: 0,
+b_cond_uptime: 100,
+b_mult: 1,
+b_extra_attacks: 0,
+b_extra_attack_factor: 100,
+b_extra_on_hit: 0,
+b_control_factor: 100,
+b_enemy_att_malus: 0,
+b_enemy_malus_uptime: 100,
+b_incoming_reduction: 0,
+b_intercept: 0,
+b_intercept_factor: 100,
+b_mental_direct: 0,
+b_mental_on_hit: 0,
+b_mental_targets: 1,
+b_self_on_miss: 0,
+b_self_flat: 0,
+b_heal_now: 0,
+b_heal_hot: 0,
+b_heal_efficiency: 100,
+b_utility: 0,
+b_charge_cost: 1
+};
+
+const RELIC_GROUPS = [
+{ name: "Zaban", presets: ["zaban_passif", "zaban_traitre", "zaban_serment"], role: "Justice / duel", summary: "Relique de serment orientee duel. Sa vraie valeur varie fortement selon la legitimite de la cible et le declenchement de l'actif." },
+{ name: "Samawi", presets: ["samawi_treve", "samawi_aube_alt"], role: "Controle / paix", summary: "Relique de controle mental et d'apaisement. Son score depend fortement du nombre reel de cibles affectees." },
+{ name: "Nishan", presets: ["nishan_passif", "nishan_sentence"], role: "Chasse / focus", summary: "Relique de traque mono-cible. Elle performe surtout quand le combat est deja prepare autour d'une cible marquee." },
+{ name: "Khashtar", presets: ["khashtar_passif", "khashtar_dette"], role: "Vengeance / risque", summary: "Relique de revanche. Plus son backlash est severe, plus sa moyenne descend malgre un meilleur cas tres violent." },
+{ name: "Garmazan", presets: ["garmazan_passif", "garmazan_fleche"], role: "Degats / etats", summary: "Relique d'archerie magique qui combine degats et statut. Le controle sur touche reste volontairement pondere." },
+{ name: "Bahr", presets: ["bahr_passif", "bahr_vague"], role: "Protection / eau", summary: "Relique defensive propre. Son actif de vague est proche d'un etalon simple de mitigation." },
+{ name: "Khiyal et Hazar", presets: ["khiyal_passif", "khiyal_voile"], role: "Ruse / esquive", summary: "Relique d'embuscade. L'actif combine un pic de defense et une meilleure ouverture offensive." },
+{ name: "Taban", presets: ["taban_passif", "taban_silence", "taban_cygne"], role: "Infiltration / surprise", summary: "Relique d'ombre et de surprise. Sa lecture devient juste seulement si l'on compte aussi le silence defensif." },
+{ name: "Saat et Zaman", presets: ["saat_passif", "saat_rythme"], role: "Tempo / double frappe", summary: "Relique de rythme temporel. La deuxieme attaque est volontairement sous-ponderee pour eviter de surpayer le meilleur cas." },
+{ name: "Akhtari", presets: ["akhtari_passif", "akhtari_vision", "akhtari_oeil"], role: "Observation / utilitaire", summary: "Relique d'analyse. Une partie majeure de sa valeur passe par l'utilite et le tempo, pas par les degats bruts." },
+{ name: "Mishraq", presets: ["mishraq_passif", "mishraq_voeu"], role: "Bouclier / endurance", summary: "Relique defensive lisible, proche d'un package bouclier + soin." },
+{ name: "Ilyr", presets: ["ilyr_grace", "ilyr_partage"], role: "Soutien / compassion", summary: "Relique de secours et de soin. Le moteur lisse son soin pour eviter de compter a pleine valeur chaque point rendu." },
+{ name: "Saelthir", presets: ["saelthir_voix", "saelthir_eclat"], role: "Charme / lumiere", summary: "Relique hybride entre charme et lame lumineuse. L'actif offensif est calibre comme un vrai paquet de duel." },
+{ name: "Nimthalas", presets: ["nimthalas_passif", "nimthalas_voile", "nimthalas_jugement"], role: "Veille / execution", summary: "Relique de seuils de vie. Elle monte bien quand l'execution conditionnelle a une uptime reelle." },
+{ name: "Lomineth", presets: ["lomineth_interposition", "lomineth_regard"], role: "Sentinelle / veille", summary: "Relique de protection de proximite et de marquage tactique." },
+{ name: "Thalanir", presets: ["thalanir_passif", "thalanir_mur", "thalanir_replique"], role: "Anti-mental / protection", summary: "Relique anti-intrusion. Elle parait souvent plus faible en duel qu'en vrai groupe, d'ou le lissage probabiliste." },
+{ name: "Aeltharion", presets: ["aeltharion_lame", "aeltharion_bouclier", "aeltharion_danse", "aeltharion_horizon", "aeltharion_egide"], role: "Polyvalence / chevalier", summary: "Relique polyvalente lame-bouclier. Le moteur evite de cumuler toutes ses meilleures lectures simultanement." },
+{ name: "Solvaris", presets: ["solvaris_aube", "solvaris_traqueur"], role: "Poison / burst", summary: "Relique d'assassinat precise. Le poison exploite est lisse avec une probabilite moyenne de bon contexte." },
+{ name: "Thalerys", presets: ["thalerys_passif", "thalerys_fracture", "thalerys_danse"], role: "Ligne / fragmentation", summary: "Relique de zone. Ses actifs sont ponderees par une moyenne d'impact spatial plutot que par le meilleur cas multi-cibles." },
+{ name: "Eryndel", presets: ["eryndel_passif", "eryndel_piqure", "eryndel_brume"], role: "Sommeil / brume", summary: "Relique de sommeil et de brume. Les effets de zone et d'endormissement sont volontairement ramènes à une moyenne d'usage." }
+];
+
+function num(id) {
+return Number(document.getElementById(id).value) || 0;
+}
+
+function mode(id) {
+return document.getElementById(id).value;
+}
+
+function dieSize(stat) {
+const safe = Math.max(0, stat);
+return Math.max(10, Math.ceil(safe / 10) * 10);
+}
+
+function buildPmf(stat, rollMode) {
+const d = dieSize(stat);
+const pmf = [];
+for (let k = 1; k <= d; k++) {
+let p = 1 / d;
+if (rollMode === "adv") p = (2 * k - 1) / (d * d);
+if (rollMode === "dis") p = (2 * (d - k) + 1) / (d * d);
+pmf.push({ value: stat + k, prob: p });
+}
+return pmf;
+}
+
+function marginDamage(margin) {
+if (margin <= 0) return 0;
+if (margin <= 4) return 2;
+return Math.floor(margin / 5) * 5;
+}
+
+function calcAttack(att, def, attMode, defMode, cfg, attBonus = 0, defBonus = 0) {
+const atkPmf = buildPmf(att, attMode);
+const defPmf = buildPmf(def, defMode);
+let hitP = 0;
+let expectedAtkDamage = 0;
+
+for (const a of atkPmf) {
+for (const d of defPmf) {
+const p = a.prob * d.prob;
+const margin = (a.value + attBonus) - (d.value + defBonus);
+if (margin > 0) {
+hitP += p;
+const base = marginDamage(margin);
+const onHit = (base + cfg.flatOnHit + cfg.condOnHit) * cfg.multiplier;
+expectedAtkDamage += p * Math.max(0, onHit);
+}
+}
+}
+
+const expectedOnHit = hitP > 0 ? expectedAtkDamage / hitP : 0;
+return {
+hitP,
+expectedAtkDamage,
+expectedOnHit,
+sequence: hitP >= 0.999999 ? Number.POSITIVE_INFINITY : expectedAtkDamage / (1 - hitP),
+actionValue: expectedAtkDamage
+};
+}
+
+function getEvaluationContext() {
+const att = num("att");
+const def = num("def");
+const pm = num("pm");
+const eAtt = num("e_att");
+const eDef = num("e_def");
+const eVol = num("e_vol");
+const attMode = mode("att_mode");
+const defMode = mode("def_mode");
+const pmMode = mode("pm_mode");
+const volMode = mode("vol_mode");
+
+const base = calcAttack(att, eDef, attMode, defMode, { flatOnHit: 0, condOnHit: 0, multiplier: 1 });
+const enemy = calcAttack(eAtt, def, "normal", "normal", { flatOnHit: 0, condOnHit: 0, multiplier: 1 });
+
+return { att, def, pm, eAtt, eDef, eVol, attMode, defMode, pmMode, volMode, base, enemy };
+}
+
+function getCustomFromInputs() {
+return {
+b_att: num("b_att"),
+b_edef: num("b_edef"),
+b_pm: num("b_pm"),
+b_evol: num("b_evol"),
+b_dmg_on_hit: num("b_dmg_on_hit"),
+b_cond_dmg: num("b_cond_dmg"),
+b_cond_uptime: Math.max(0, Math.min(100, num("b_cond_uptime"))),
+b_mult: Math.max(0, num("b_mult")) || 1,
+b_extra_attacks: Math.max(0, num("b_extra_attacks")),
+b_extra_attack_factor: Math.max(0, Math.min(100, num("b_extra_attack_factor"))),
+b_extra_on_hit: Math.max(0, num("b_extra_on_hit")),
+b_control_factor: Math.max(0, Math.min(100, num("b_control_factor"))),
+b_enemy_att_malus: num("b_enemy_att_malus"),
+b_enemy_malus_uptime: Math.max(0, Math.min(100, num("b_enemy_malus_uptime"))),
+b_incoming_reduction: Math.max(0, Math.min(100, num("b_incoming_reduction"))),
+b_intercept: Math.max(0, num("b_intercept")),
+b_intercept_factor: Math.max(0, Math.min(100, num("b_intercept_factor"))),
+b_mental_direct: Math.max(0, num("b_mental_direct")),
+b_mental_on_hit: Math.max(0, num("b_mental_on_hit")),
+b_mental_targets: Math.max(0, num("b_mental_targets")),
+b_self_on_miss: Math.max(0, num("b_self_on_miss")),
+b_self_flat: Math.max(0, num("b_self_flat")),
+b_heal_now: Math.max(0, num("b_heal_now")),
+b_heal_hot: Math.max(0, num("b_heal_hot")),
+b_heal_efficiency: Math.max(0, Math.min(100, num("b_heal_efficiency"))),
+b_utility: num("b_utility"),
+b_charge_cost: Math.max(1, Math.round(num("b_charge_cost") || 1))
+};
+}
+
+function setCustomInputs(cfg) {
+for (const key in DEFAULT_CUSTOM) {
+const el = document.getElementById(key);
+if (el) el.value = cfg[key] != null ? cfg[key] : DEFAULT_CUSTOM[key];
+}
+}
+
+function evaluateWithCustom(custom, ctx) {
+const modified = calcAttack(ctx.att, ctx.eDef, ctx.attMode, ctx.defMode, {
+flatOnHit: custom.b_dmg_on_hit,
+condOnHit: custom.b_cond_dmg * (custom.b_cond_uptime / 100),
+multiplier: custom.b_mult
+}, custom.b_att, custom.b_edef);
+
+const mentalModified = calcAttack(ctx.pm, ctx.eVol, ctx.pmMode, ctx.volMode, {
+flatOnHit: 0,
+condOnHit: 0,
+multiplier: 1
+}, custom.b_pm, custom.b_evol);
+
+const enemyModified = calcAttack(ctx.eAtt, ctx.def, "normal", "normal", {
+flatOnHit: 0,
+condOnHit: 0,
+multiplier: 1
+}, -custom.b_enemy_att_malus, 0);
+
+const extraAttackFactor = custom.b_extra_attack_factor / 100;
+const controlFactor = custom.b_control_factor / 100;
+const enemyMalusUptime = custom.b_enemy_malus_uptime / 100;
+const interceptFactor = custom.b_intercept_factor / 100;
+const healEfficiency = custom.b_heal_efficiency / 100;
+
+const extraFromImmediate = custom.b_extra_attacks * extraAttackFactor * modified.expectedAtkDamage;
+const extraFromOnHit = custom.b_extra_on_hit * extraAttackFactor * modified.hitP * modified.expectedAtkDamage;
+const controlDirect = custom.b_mental_direct * custom.b_mental_targets * controlFactor * mentalModified.hitP * ctx.enemy.actionValue;
+const controlOnHit = custom.b_mental_on_hit * custom.b_mental_targets * controlFactor * modified.hitP * mentalModified.hitP * ctx.enemy.actionValue;
+
+const offenseGain =
+(modified.actionValue - ctx.base.actionValue) +
+extraFromImmediate +
+extraFromOnHit +
+controlDirect +
+controlOnHit;
+
+const preventedByAttackMalus = Math.max(0, ctx.enemy.actionValue - enemyModified.actionValue) * enemyMalusUptime;
+const preventedByReduction = enemyModified.actionValue * (custom.b_incoming_reduction / 100);
+const preventedByIntercept = custom.b_intercept * interceptFactor * ctx.enemy.actionValue;
+const healValue = (custom.b_heal_now + custom.b_heal_hot) * healEfficiency;
+const defenseGainRaw = preventedByAttackMalus + preventedByReduction + preventedByIntercept + healValue + custom.b_utility;
+
+const backlashRaw = (1 - modified.hitP) * custom.b_self_on_miss + custom.b_self_flat;
+const chargeCost = Math.max(1, custom.b_charge_cost || 1);
+const offenseGainPerCharge = offenseGain / chargeCost;
+const defenseGainPerCharge = defenseGainRaw / chargeCost;
+const backlashPerCharge = backlashRaw / chargeCost;
+const total = offenseGainPerCharge + defenseGainPerCharge - backlashPerCharge;
+
+return {
+modified,
+mentalModified,
+enemyModified,
+offenseGain: offenseGainPerCharge,
+defenseGain: defenseGainPerCharge,
+backlash: backlashPerCharge,
+chargeCost,
+total
+};
+}
+
+function getPresetConfig(presetId, pv) {
+const cfg = { ...DEFAULT_CUSTOM };
+
+if (presetId === "zaban_passif") {
+cfg.b_att = 1;
+cfg.b_dmg_on_hit = 3;
+}
+if (presetId === "zaban_traitre") {
+cfg.b_cond_dmg = 5;
+cfg.b_cond_uptime = 60;
+}
+if (presetId === "zaban_serment") {
+cfg.b_extra_attacks = 1;
+cfg.b_extra_attack_factor = 50;
+}
+if (presetId === "samawi_treve") cfg.b_mental_direct = 1;
+if (presetId === "samawi_aube_alt") {
+cfg.b_mental_direct = 1;
+cfg.b_mental_targets = 1.4;
+cfg.b_control_factor = 80;
+}
+if (presetId === "nishan_passif") {
+cfg.b_att = 2;
+cfg.b_dmg_on_hit = 1;
+}
+if (presetId === "nishan_sentence") {
+cfg.b_att = 3;
+cfg.b_utility = 1.4;
+}
+if (presetId === "khashtar_passif") {
+cfg.b_att = 1;
+cfg.b_dmg_on_hit = 2;
+}
+if (presetId === "khashtar_dette") {
+cfg.b_att = 1;
+cfg.b_mult = 2;
+cfg.b_self_on_miss = 2;
+cfg.b_charge_cost = 2;
+}
+if (presetId === "garmazan_passif") {
+cfg.b_att = 1;
+cfg.b_dmg_on_hit = 2;
+}
+if (presetId === "garmazan_fleche") {
+cfg.b_mental_on_hit = 1;
+cfg.b_dmg_on_hit = 3;
+}
+if (presetId === "bahr_passif") cfg.b_att = 2;
+if (presetId === "bahr_vague") cfg.b_incoming_reduction = 50;
+if (presetId === "khiyal_passif") cfg.b_dmg_on_hit = 2;
+if (presetId === "khiyal_voile") {
+cfg.b_att = 2;
+cfg.b_enemy_att_malus = 5;
+}
+if (presetId === "taban_passif") cfg.b_att = 2;
+if (presetId === "taban_silence") {
+cfg.b_enemy_att_malus = 5;
+cfg.b_enemy_malus_uptime = 100;
+cfg.b_utility = 1;
+}
+if (presetId === "taban_cygne") cfg.b_att = 2;
+if (presetId === "saat_passif") cfg.b_dmg_on_hit = 2;
+if (presetId === "saat_rythme") cfg.b_extra_on_hit = 1;
+if (presetId === "akhtari_passif") cfg.b_att = 2;
+if (presetId === "akhtari_vision") cfg.b_utility = 2.5;
+if (presetId === "akhtari_oeil") cfg.b_utility = 3;
+if (presetId === "mishraq_passif") cfg.b_enemy_att_malus = 2;
+if (presetId === "mishraq_voeu") cfg.b_heal_now = pv / 4;
+if (presetId === "ilyr_grace") {
+cfg.b_heal_hot = 4;
+cfg.b_enemy_att_malus = 3;
+cfg.b_enemy_malus_uptime = 50;
+cfg.b_heal_efficiency = 50;
+cfg.b_utility = 0.4;
+}
+if (presetId === "ilyr_partage") cfg.b_incoming_reduction = 50;
+if (presetId === "saelthir_voix") cfg.b_mental_direct = 1;
+if (presetId === "saelthir_eclat") {
+cfg.b_att = 2;
+cfg.b_dmg_on_hit = 4;
+}
+if (presetId === "nimthalas_passif") cfg.b_dmg_on_hit = 2;
+if (presetId === "nimthalas_voile") {
+cfg.b_enemy_att_malus = 5;
+cfg.b_utility = 1;
+}
+if (presetId === "nimthalas_jugement") {
+cfg.b_att = 3;
+cfg.b_cond_dmg = 3;
+}
+if (presetId === "lomineth_interposition") cfg.b_incoming_reduction = 50;
+if (presetId === "lomineth_regard") {
+cfg.b_att = 2;
+cfg.b_utility = 2;
+}
+if (presetId === "thalanir_passif") {
+cfg.b_enemy_att_malus = 2;
+cfg.b_evol = -3;
+cfg.b_enemy_malus_uptime = 60;
+}
+if (presetId === "thalanir_mur") {
+cfg.b_enemy_att_malus = 3;
+cfg.b_evol = -2;
+cfg.b_enemy_malus_uptime = 65;
+}
+if (presetId === "thalanir_replique") {
+cfg.b_mental_direct = 1;
+cfg.b_mental_targets = 1;
+cfg.b_control_factor = 100;
+}
+if (presetId === "aeltharion_lame") cfg.b_att = 1;
+if (presetId === "aeltharion_bouclier") cfg.b_enemy_att_malus = 1;
+if (presetId === "aeltharion_danse") {
+cfg.b_enemy_att_malus = 5;
+cfg.b_enemy_malus_uptime = 60;
+}
+if (presetId === "aeltharion_horizon") cfg.b_dmg_on_hit = 3;
+if (presetId === "aeltharion_egide") {
+cfg.b_enemy_att_malus = 3;
+cfg.b_enemy_malus_uptime = 50;
+cfg.b_intercept = 1;
+cfg.b_intercept_factor = 35;
+cfg.b_utility = 0.4;
+}
+if (presetId === "solvaris_aube") {
+cfg.b_att = 2;
+cfg.b_cond_dmg = 3;
+}
+if (presetId === "solvaris_traqueur") {
+cfg.b_att = 2;
+cfg.b_cond_dmg = 5;
+cfg.b_cond_uptime = 70;
+}
+if (presetId === "thalerys_passif") cfg.b_att = 2;
+if (presetId === "thalerys_fracture") {
+cfg.b_att = 2;
+cfg.b_extra_on_hit = 0.5;
+cfg.b_extra_attack_factor = 80;
+}
+if (presetId === "thalerys_danse") {
+cfg.b_att = 2;
+cfg.b_heal_hot = 3;
+cfg.b_heal_efficiency = 70;
+}
+if (presetId === "eryndel_passif") cfg.b_att = 2;
+if (presetId === "eryndel_piqure") {
+cfg.b_att = 2;
+cfg.b_mental_on_hit = 1;
+cfg.b_control_factor = 75;
+cfg.b_utility = 0.8;
+}
+if (presetId === "eryndel_brume") {
+cfg.b_mental_direct = 1;
+cfg.b_mental_targets = 1.5;
+cfg.b_control_factor = 70;
+}
+
+return cfg;
+}
+
+function resetCustom() {
+setCustomInputs(DEFAULT_CUSTOM);
+}
+
+function getPresetLabel(presetId) {
+const option = document.querySelector("#preset option[value='" + presetId + "']");
+return option ? option.textContent : presetId;
+}
+
+function scoreClass(value) {
+if (value < 2.7) return "score-low";
+if (value > 3.3) return "score-high";
+return "score-ok";
+}
+
+function scoreVerdict(value) {
+if (value < 2.7) return "Sous budget";
+if (value > 3.3) return "Sur budget";
+return "Dans la cible";
+}
+
+function buildResultTone(value) {
+if (value < 2.7) return "Relique actuellement sous la cible de calibration.";
+if (value > 3.3) return "Relique actuellement au-dessus de la cible de calibration.";
+return "Relique deja proche de la cible de calibration.";
+}
+
+function getBestPresetForRelic(relic, ctx, pv) {
+let bestPreset = null;
+let bestEval = null;
+let bestScore = Number.NEGATIVE_INFINITY;
+const breakdown = [];
+
+for (const presetId of relic.presets) {
+const cfg = getPresetConfig(presetId, pv);
+const evaluation = evaluateWithCustom(cfg, ctx);
+breakdown.push({ presetId, label: getPresetLabel(presetId), evaluation, cfg });
+if (evaluation.total > bestScore) {
+bestScore = evaluation.total;
+bestPreset = presetId;
+bestEval = evaluation;
+}
+}
+
+breakdown.sort((a, b) => b.evaluation.total - a.evaluation.total);
+return { bestPreset, bestEval, bestScore, breakdown };
+}
+
+function renderGlobalComparison() {
+const pv = num("pv");
+const ctx = getEvaluationContext();
+const customEval = evaluateWithCustom(getCustomFromInputs(), ctx);
+const rows = RELIC_GROUPS.map((relic) => {
+const best = getBestPresetForRelic(relic, ctx, pv);
+return {
+name: relic.name,
+relicTotal: best.bestScore,
+customTotal: customEval.total,
+delta: customEval.total - best.bestScore
+};
+}).sort((a, b) => b.delta - a.delta);
+
+const tbody = document.getElementById("compare_rows");
+tbody.innerHTML = rows.map((row) => {
+const deltaClass = row.delta > 0 ? "delta-pos" : row.delta < 0 ? "delta-neg" : "delta-zero";
+return "<tr>" +
+"<td>" + row.name + "</td>" +
+"<td>" + row.relicTotal.toFixed(2) + "</td>" +
+"<td>" + row.customTotal.toFixed(2) + "</td>" +
+"<td class='" + deltaClass + "'>" + row.delta.toFixed(2) + "</td>" +
+"</tr>";
+}).join("");
+}
+
+function renderFocusRelic() {
+const relicName = document.getElementById("focus_relic").value;
+const focusPanel = document.getElementById("focus_compare");
+const summaryPanel = document.getElementById("relic_summary");
+const relic = RELIC_GROUPS.find((item) => item.name === relicName);
+
+if (!relic) {
+focusPanel.innerHTML = "<div class='detail-item'>Choisis une relique pour voir l'ecart detaille preset par preset.</div>";
+summaryPanel.innerHTML = "<div class='detail-item'>Le resume detaille s'affiche ici apres selection d'une relique.</div>";
+return;
+}
+
+const pv = num("pv");
+const ctx = getEvaluationContext();
+const customEval = evaluateWithCustom(getCustomFromInputs(), ctx);
+const best = getBestPresetForRelic(relic, ctx, pv);
+const delta = customEval.total - best.bestScore;
+const deltaClass = delta > 0 ? "delta-pos" : delta < 0 ? "delta-neg" : "delta-zero";
+
+focusPanel.innerHTML = "<div class='detail-item'>" +
+"<h4>Comparaison directe : " + relic.name + "</h4>" +
+"<div class='summary-grid'>" +
+"<div class='summary-tile'><strong>Custom</strong><span class='metric-large'>" + customEval.total.toFixed(2) + "</span></div>" +
+"<div class='summary-tile'><strong>Meilleur preset</strong><span class='metric-large'>" + best.bestScore.toFixed(2) + "</span></div>" +
+"<div class='summary-tile'><strong>Delta</strong><span class='metric-large " + deltaClass + "'>" + delta.toFixed(2) + "</span></div>" +
+"<div class='summary-tile'><strong>Verdict</strong><span class='metric-large " + scoreClass(best.bestScore) + "'>" + scoreVerdict(best.bestScore) + "</span></div>" +
+"</div>" +
+"</div>" +
+best.breakdown.map((item) => {
+const itemDelta = customEval.total - item.evaluation.total;
+const itemDeltaClass = itemDelta > 0 ? "delta-pos" : itemDelta < 0 ? "delta-neg" : "delta-zero";
+return "<div class='detail-item'>" +
+"<h4>" + item.label + "</h4>" +
+"<span class='pill'>Score " + item.evaluation.total.toFixed(2) + "</span>" +
+"<span class='pill'>" + scoreVerdict(item.evaluation.total) + "</span>" +
+"<div class='small'>Offense " + item.evaluation.offenseGain.toFixed(2) + " | Defense " + item.evaluation.defenseGain.toFixed(2) + " | Backlash " + item.evaluation.backlash.toFixed(2) + " | Delta vs custom <span class='" + itemDeltaClass + "'>" + itemDelta.toFixed(2) + "</span></div>" +
+"</div>";
+}).join("");
+
+summaryPanel.innerHTML = "<div class='detail-item'>" +
+"<h4>" + relic.name + "</h4>" +
+"<div class='small'>" + relic.role + "</div>" +
+"<p>" + relic.summary + "</p>" +
+"<div class='summary-grid'>" +
+"<div class='summary-tile'><strong>Meilleur preset</strong><span class='metric-large'>" + getPresetLabel(best.bestPreset) + "</span></div>" +
+"<div class='summary-tile'><strong>Score retenu</strong><span class='metric-large " + scoreClass(best.bestScore) + "'>" + best.bestScore.toFixed(2) + "</span></div>" +
+"<div class='summary-tile'><strong>Lecture</strong><span class='metric-large " + scoreClass(best.bestScore) + "'>" + scoreVerdict(best.bestScore) + "</span></div>" +
+"<div class='summary-tile'><strong>Note</strong><span class='metric-large'>" + relic.presets.length + " presets</span></div>" +
+"</div>" +
+"<p>" + buildResultTone(best.bestScore) + "</p>" +
+"</div>" +
+best.breakdown.map((item) => {
+return "<div class='detail-item'>" +
+"<h4>" + item.label + "</h4>" +
+"<div class='small'>Score <span class='" + scoreClass(item.evaluation.total) + "'>" + item.evaluation.total.toFixed(2) + "</span> | Offense " + item.evaluation.offenseGain.toFixed(2) + " | Defense " + item.evaluation.defenseGain.toFixed(2) + " | Backlash " + item.evaluation.backlash.toFixed(2) + "</div>" +
+"</div>";
+}).join("");
+}
+
+function calculate() {
+const ctx = getEvaluationContext();
+const pv = num("pv");
+const mental = calcAttack(ctx.pm, ctx.eVol, ctx.pmMode, ctx.volMode, { flatOnHit: 0, condOnHit: 0, multiplier: 1 });
+const evalResult = evaluateWithCustom(getCustomFromInputs(), ctx);
+
+document.getElementById("hit").innerText = (ctx.base.hitP * 100).toFixed(2) + " %";
+document.getElementById("atk").innerText = ctx.base.expectedAtkDamage.toFixed(2);
+document.getElementById("onhit").innerText = ctx.base.expectedOnHit.toFixed(2);
+document.getElementById("seq").innerText = ctx.base.actionValue.toFixed(2);
+document.getElementById("mental").innerText = (mental.hitP * 100).toFixed(2) + " %";
+document.getElementById("enemy_seq").innerText = ctx.enemy.actionValue.toFixed(2);
+
+document.getElementById("m_hit").innerText = (evalResult.modified.hitP * 100).toFixed(2) + " %";
+document.getElementById("m_atk").innerText = evalResult.modified.expectedAtkDamage.toFixed(2);
+document.getElementById("m_seq").innerText = evalResult.modified.actionValue.toFixed(2);
+document.getElementById("delta_off").innerText = evalResult.offenseGain.toFixed(2);
+document.getElementById("delta_def").innerText = evalResult.defenseGain.toFixed(2);
+document.getElementById("delta_self").innerText = evalResult.backlash.toFixed(2);
+document.getElementById("result").innerText = evalResult.total.toFixed(2) + " PV eco / charge";
+
+window.__pv = pv;
+renderFocusRelic();
+}
+
+function applyPreset() {
+resetCustom();
+setCustomInputs(getPresetConfig(document.getElementById("preset").value, num("pv")));
+calculate();
+}
+
+function loadSavedRelics() {
+try {
+const raw = localStorage.getItem(STORAGE_KEY);
+const parsed = raw ? JSON.parse(raw) : [];
+return Array.isArray(parsed) ? parsed : [];
+} catch (_) {
+return [];
+}
+}
+
+function saveSavedRelics(items) {
+localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+}
+
+function refreshCustomRelicSelect() {
+const list = loadSavedRelics();
+const select = document.getElementById("custom_relics");
+select.innerHTML = "";
+if (!list.length) {
+select.innerHTML = "<option value=''>Aucune relique custom enregistree</option>";
+return;
+}
+for (const item of list) {
+const option = document.createElement("option");
+option.value = item.name;
+option.textContent = item.name;
+select.appendChild(option);
+}
+}
+
+function saveCurrentCustomRelic() {
+const name = document.getElementById("custom_name").value.trim();
+if (!name) {
+alert("Donne un nom a ta relique custom avant sauvegarde.");
+return;
+}
+const list = loadSavedRelics();
+const config = getCustomFromInputs();
+const idx = list.findIndex((item) => item.name === name);
+const record = { name, config };
+if (idx >= 0) list[idx] = record;
+else list.push(record);
+saveSavedRelics(list);
+refreshCustomRelicSelect();
+document.getElementById("custom_relics").value = name;
+}
+
+function loadSelectedCustomRelic() {
+const name = document.getElementById("custom_relics").value;
+if (!name) return;
+const found = loadSavedRelics().find((item) => item.name === name);
+if (!found) return;
+document.getElementById("custom_name").value = found.name;
+setCustomInputs({ ...DEFAULT_CUSTOM, ...found.config });
+document.getElementById("preset").value = "none";
+calculate();
+}
+
+function deleteSelectedCustomRelic() {
+const name = document.getElementById("custom_relics").value;
+if (!name) return;
+saveSavedRelics(loadSavedRelics().filter((item) => item.name !== name));
+refreshCustomRelicSelect();
+}
+
+function populateFocusRelicSelect() {
+const select = document.getElementById("focus_relic");
+select.innerHTML = RELIC_GROUPS.map((relic) => "<option value='" + relic.name + "'>" + relic.name + "</option>").join("");
+}
+
+document.getElementById("preset").addEventListener("change", applyPreset);
+document.getElementById("save_custom").addEventListener("click", saveCurrentCustomRelic);
+document.getElementById("load_custom").addEventListener("click", loadSelectedCustomRelic);
+document.getElementById("delete_custom").addEventListener("click", deleteSelectedCustomRelic);
+document.getElementById("compare_btn").addEventListener("click", renderGlobalComparison);
+document.getElementById("compare_focus_btn").addEventListener("click", renderFocusRelic);
+document.getElementById("focus_relic").addEventListener("change", renderFocusRelic);
+
+for (const el of document.querySelectorAll("input,select")) {
+if (el.id !== "preset" && el.id !== "focus_relic") {
+el.addEventListener("input", calculate);
+el.addEventListener("change", calculate);
+}
+}
+
+refreshCustomRelicSelect();
+populateFocusRelicSelect();
+calculate();
+renderGlobalComparison();
+</script>
+</body>
+</html>
